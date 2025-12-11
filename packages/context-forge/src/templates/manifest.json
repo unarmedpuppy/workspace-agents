@@ -1,0 +1,110 @@
+{
+  "directories": [
+    "agents",
+    "agents/reference",
+    "agents/plans",
+    "agents/plans/local",
+    "agents/personas",
+    "agents/skills",
+    "agents/legacy",
+    ".claude/skills",
+    ".cursor/rules",
+    ".github"
+  ],
+  "files": [
+    {
+      "template": "AGENTS.md.template",
+      "dest": "AGENTS.md"
+    },
+    {
+      "template": "CLAUDE.md.template",
+      "dest": "CLAUDE.md"
+    },
+    {
+      "template": "GEMINI.md.template",
+      "dest": "GEMINI.md"
+    },
+    {
+      "template": "README.md.template",
+      "dest": "README.md",
+      "skipIfExists": true
+    },
+    {
+      "template": "agents-README.md.template",
+      "dest": "agents/README.md"
+    },
+    {
+      "template": "tasks.md.template",
+      "dest": "agents/plans/tasks.md"
+    },
+    {
+      "template": "plan_act.md.template",
+      "dest": "agents/reference/plan_act.md"
+    },
+    {
+      "template": "documentation-style.md.template",
+      "dest": "agents/reference/documentation-style.md"
+    },
+    {
+      "template": "agent-patterns.md.template",
+      "dest": "agents/reference/agent-patterns.md"
+    },
+    {
+      "template": "skill-patterns.md.template",
+      "dest": "agents/reference/skill-patterns.md"
+    },
+    {
+      "template": "typescript.md.template",
+      "dest": "agents/reference/typescript.md"
+    },
+    {
+      "template": "personas-README.md.template",
+      "dest": "agents/personas/README.md"
+    },
+    {
+      "template": "skills-README.md.template",
+      "dest": "agents/skills/README.md"
+    },
+    {
+      "template": "legacy-README.md.template",
+      "dest": "agents/legacy/README.md"
+    },
+    {
+      "template": "claude-skills-README.md.template",
+      "dest": ".claude/skills/README.md"
+    },
+    {
+      "template": "project.mdc.template",
+      "dest": ".cursor/rules/project.mdc"
+    },
+    {
+      "template": "copilot-instructions.md.template",
+      "dest": ".github/copilot-instructions.md"
+    }
+  ],
+  "symlinks": [
+    {
+      "target": "../../agents/skills/skill-creator",
+      "link": ".claude/skills/skill-creator"
+    },
+    {
+      "target": "../../agents/skills/plan-creator",
+      "link": ".claude/skills/plan-creator"
+    },
+    {
+      "target": "../../agents/skills/scaffold-workflow",
+      "link": ".claude/skills/scaffold-workflow"
+    },
+    {
+      "target": "../../agents/skills/upgrade-workflow",
+      "link": ".claude/skills/upgrade-workflow"
+    }
+  ],
+  "gitignoreAppend": [
+    "agents/plans/local/"
+  ],
+  "skillsToCopy": [
+    "skill-creator",
+    "plan-creator"
+  ]
+}

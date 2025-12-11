@@ -1,0 +1,51 @@
+{
+  "name": "workspace-agents",
+  "version": "1.0.0",
+  "description": "Initialize AI agent workflow framework in any project",
+  "main": "src/cli.js",
+  "bin": {
+    "workspace-agents": "./bin/context-forge.js"
+  },
+  "files": [
+    "bin",
+    "src"
+  ],
+  "scripts": {
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "prepublishOnly": "npm test"
+  },
+  "keywords": [
+    "ai",
+    "agent",
+    "workflow",
+    "claude",
+    "copilot",
+    "cursor",
+    "gemini",
+    "scaffold",
+    "cli",
+    "agents-md",
+    "local-agents"
+  ],
+  "author": "",
+  "license": "MIT",
+  "engines": {
+    "node": ">=14"
+  },
+  "dependencies": {
+    "chalk": "^4.1.2",
+    "commander": "^11.0.0",
+    "fs-extra": "^11.0.0"
+  },
+  "devDependencies": {
+    "jest": "^29.0.0"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/yourorg/workspace-agents.git"
+  }
+}

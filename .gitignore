@@ -1,0 +1,34 @@
+# Agent local plans (not committed)
+agents/plans/local/*
+!agents/plans/local/.gitkeep
+
+# Agent legacy files (not committed except migration docs)
+agents/legacy/*
+!agents/legacy/.gitkeep
+!agents/legacy/README.md
+!agents/legacy/MIGRATION.md
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Environment
+.env
+.env.local
+.env.*.local
+
+# Dependencies
+node_modules/
+vendor/
+
+# Build outputs
+dist/
+build/
+*.log
