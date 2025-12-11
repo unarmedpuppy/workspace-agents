@@ -4,7 +4,7 @@
   "description": "Initialize AI agent workflow framework in any project",
   "main": "src/cli.js",
   "bin": {
-    "workspace-agents": "./bin/context-forge.js"
+    "workspace-agents": "./bin/workflow-agents.js"
   },
   "files": [
     "bin",

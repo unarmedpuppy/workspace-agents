@@ -9,7 +9,7 @@ describe('init command', () => {
 
   beforeEach(async () => {
     // Create a unique temp directory for each test
-    tempDir = path.join(os.tmpdir(), `context-forge-test-${Date.now()}`);
+    tempDir = path.join(os.tmpdir(), `workflow-agents-test-${Date.now()}`);
     await fs.ensureDir(tempDir);
   });
 
