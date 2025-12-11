@@ -1,6 +1,6 @@
 {
   "name": "workspace-agents",
-  "version": "1.0.0",
+  "version": "0.0.1",
   "description": "Initialize AI agent workflow framework in any project",
   "main": "src/cli.js",
   "bin": {
@@ -12,8 +12,7 @@
   ],
   "scripts": {
     "test": "jest",
-    "test:watch": "jest --watch",
-    "prepublishOnly": "npm test"
+    "test:watch": "jest --watch"
   },
   "keywords": [
     "ai",
@@ -28,7 +27,7 @@
     "agents-md",
     "local-agents"
   ],
-  "author": "",
+  "author": "unarmedpuppy",
   "license": "MIT",
   "engines": {
     "node": ">=14"
@@ -46,6 +45,6 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/yourorg/workspace-agents.git"
+    "url": "https://github.com/unarmedpuppy/workflow-agents"
   }
 }
