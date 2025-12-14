@@ -1,0 +1,14 @@
+# Exclude node_modules from bundled skills
+src/templates/skills/*/node_modules/
+
+# Test files
+tests/
+*.test.js
+
+# Development files
+.eslintrc*
+.prettierrc*
+jest.config.js
+
+# Lock files (use package.json versions)
+src/templates/skills/*/package-lock.json
