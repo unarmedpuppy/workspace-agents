@@ -77,6 +77,26 @@ function formatGitignoreAppend(lines) {
 }
 
 /**
+ * Format a skill copy message
+ * @param {string} skillName - Name of skill being copied
+ * @returns {string}
+ */
+function formatSkillCopy(skillName) {
+  return `${chalk.green('COPY SKILL')}  agents/skills/${skillName}`;
+}
+
+/**
+ * Format a symlink fix message
+ * @param {string} link - Link path
+ * @param {string} target - Target path
+ * @param {string} reason - Reason for fix
+ * @returns {string}
+ */
+function formatSymlinkFix(link, target, reason) {
+  return `${chalk.yellow('FIX LINK')}    ${link} ${chalk.gray('→')} ${target} ${chalk.gray(`(${reason})`)}`;
+}
+
+/**
  * Format a skip message
  * @param {string} filePath - Path that was skipped
  * @param {string} reason - Reason for skipping
@@ -139,8 +159,18 @@ function printChanges(changes) {
       console.log();
     }
 
+    if (changes.skillsToCopy?.length) {
+      changes.skillsToCopy.forEach(s => console.log(formatSkillCopy(s)));
+      console.log();
+    }
+
     if (changes.symlinks?.length) {
       changes.symlinks.forEach(s => console.log(formatSymlink(s.link, s.target)));
+      console.log();
+    }
+
+    if (changes.symlinkFixes?.length) {
+      changes.symlinkFixes.forEach(f => console.log(formatSymlinkFix(f.link, f.target, f.reason)));
       console.log();
     }
 
@@ -180,8 +210,14 @@ function formatSummary(changes) {
   if (changes.creates?.length) {
     parts.push(`${changes.creates.length} creates`);
   }
+  if (changes.skillsToCopy?.length) {
+    parts.push(`${changes.skillsToCopy.length} skills`);
+  }
   if (changes.symlinks?.length) {
     parts.push(`${changes.symlinks.length} symlinks`);
+  }
+  if (changes.symlinkFixes?.length) {
+    parts.push(`${changes.symlinkFixes.length} symlink fixes`);
   }
   if (changes.legacy?.length) {
     parts.push(`${changes.legacy.length} legacy`);
@@ -217,6 +253,8 @@ module.exports = {
   formatFileMove,
   formatDirCreate,
   formatSymlink,
+  formatSymlinkFix,
+  formatSkillCopy,
   formatLegacy,
   formatGitignoreAppend,
   formatSkip,

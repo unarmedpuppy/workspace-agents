@@ -7,6 +7,13 @@ const symlinkOps = require('./symlink-ops');
 const templateEngine = require('./template-engine');
 
 /**
+ * Get bundled skills directory path
+ */
+function getBundledSkillsDir() {
+  return path.join(__dirname, '..', 'templates', 'skills');
+}
+
+/**
  * Known migration mappings from old to new structure
  */
 const MIGRATIONS = {
@@ -38,7 +45,9 @@ async function plan(projectRoot, options = {}) {
     modifications: [],
     creates: [],
     symlinks: [],
-    legacy: []
+    legacy: [],
+    skillsToCopy: [],
+    symlinkFixes: []
   };
 
   // Plan directory moves
@@ -118,15 +127,39 @@ async function plan(projectRoot, options = {}) {
     }
   }
 
-  // Plan symlinks
+  // Plan symlinks and symlink fixes
   if (!options.skipSymlinks && symlinkOps.isSymlinkSupported()) {
-    for (const link of manifest.symlinks) {
-      const linkPath = path.join(projectRoot, link.link);
-      if (!fs.existsSync(linkPath)) {
+    const symlinkResults = symlinkOps.validateSymlinks(manifest.symlinks, projectRoot);
+
+    for (const result of symlinkResults) {
+      if (result.status === 'missing') {
+        // New symlink needed
+        const spec = manifest.symlinks.find(s => s.link === result.link);
         changes.symlinks.push({
-          target: link.target,
-          link: link.link
+          target: spec.target,
+          link: spec.link
         });
+      } else if (result.status === 'broken' || result.status === 'wrong_target') {
+        // Existing symlink needs fixing
+        const spec = manifest.symlinks.find(s => s.link === result.link);
+        changes.symlinkFixes.push({
+          target: spec.target,
+          link: spec.link,
+          reason: result.status === 'broken' ? 'broken link' : `wrong target (${result.actual})`
+        });
+      }
+    }
+  }
+
+  // Plan skill sync - copy new bundled skills
+  const bundledSkillsDir = getBundledSkillsDir();
+  if (manifest.skillsToCopy?.length && fs.existsSync(bundledSkillsDir)) {
+    for (const skillName of manifest.skillsToCopy) {
+      const projectSkillPath = path.join(projectRoot, 'agents', 'skills', skillName);
+      const bundledSkillPath = path.join(bundledSkillsDir, skillName);
+
+      if (fs.existsSync(bundledSkillPath) && !fs.existsSync(projectSkillPath)) {
+        changes.skillsToCopy.push(skillName);
       }
     }
   }
@@ -220,13 +253,39 @@ async function apply(changes, projectRoot) {
     }
   }
 
-  // Create symlinks
+  // Create new symlinks
   for (const link of changes.symlinks) {
     symlinkOps.createSymlink(
       link.target,
       path.join(projectRoot, link.link),
       { force: true }
     );
+  }
+
+  // Fix broken/incorrect symlinks
+  for (const fix of changes.symlinkFixes) {
+    symlinkOps.createSymlink(
+      fix.target,
+      path.join(projectRoot, fix.link),
+      { force: true }
+    );
+  }
+
+  // Copy new skills to project
+  if (changes.skillsToCopy?.length) {
+    const bundledSkillsDir = getBundledSkillsDir();
+    const destSkillsDir = path.join(projectRoot, 'agents', 'skills');
+
+    fileOps.ensureDir(destSkillsDir);
+
+    for (const skillName of changes.skillsToCopy) {
+      const srcSkill = path.join(bundledSkillsDir, skillName);
+      const destSkill = path.join(destSkillsDir, skillName);
+
+      if (fs.existsSync(srcSkill)) {
+        fileOps.copyDir(srcSkill, destSkill);
+      }
+    }
   }
 
   // Move legacy files

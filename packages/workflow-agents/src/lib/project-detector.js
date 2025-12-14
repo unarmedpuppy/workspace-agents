@@ -1,5 +1,7 @@
 const path = require('path');
 const fs = require('fs-extra');
+const templateEngine = require('./template-engine');
+const symlinkOps = require('./symlink-ops');
 
 /**
  * Extract project name from package.json or directory name
@@ -58,7 +60,7 @@ function getFrameworkVersion(root) {
 /**
  * Analyze existing framework structure for upgrade needs
  * @param {string} root - Project root directory
- * @returns {{needsUpgrade: boolean, hasOldStructure: boolean, details: object}}
+ * @returns {{needsUpgrade: boolean, hasOldStructure: boolean, skillsOutOfSync: boolean, brokenSymlinks: boolean, details: object}}
  */
 function analyzeStructure(root) {
   const details = {
@@ -69,17 +71,53 @@ function analyzeStructure(root) {
     hasPlansLocal: fs.existsSync(path.join(root, 'agents', 'plans', 'local')),
     hasOldPlansLocal: fs.existsSync(path.join(root, 'plans-local')),
     hasClaudeSkills: fs.existsSync(path.join(root, '.claude', 'skills')),
-    hasLegacy: fs.existsSync(path.join(root, 'agents', 'legacy'))
+    hasLegacy: fs.existsSync(path.join(root, 'agents', 'legacy')),
+    missingSkills: [],
+    brokenSymlinksList: []
   };
 
   // Old structure indicators
   const hasOldStructure = details.hasTools || details.hasOldPlansLocal;
 
-  // Needs upgrade if has old structure or missing new structure pieces
-  const needsUpgrade = hasOldStructure ||
-    (details.hasAgents && (!details.hasSkills || !details.hasPlansLocal || !details.hasClaudeSkills));
+  // Check for missing bundled skills
+  let skillsOutOfSync = false;
+  let brokenSymlinks = false;
 
-  return { needsUpgrade, hasOldStructure, details };
+  if (details.hasAgents && details.hasSkills) {
+    const manifest = templateEngine.getManifest();
+    const bundledSkillsDir = path.join(__dirname, '..', 'templates', 'skills');
+
+    // Check if any bundled skills are missing from project
+    if (manifest.skillsToCopy?.length && fs.existsSync(bundledSkillsDir)) {
+      for (const skillName of manifest.skillsToCopy) {
+        const projectSkillPath = path.join(root, 'agents', 'skills', skillName);
+        const bundledSkillPath = path.join(bundledSkillsDir, skillName);
+
+        if (fs.existsSync(bundledSkillPath) && !fs.existsSync(projectSkillPath)) {
+          details.missingSkills.push(skillName);
+          skillsOutOfSync = true;
+        }
+      }
+    }
+
+    // Check symlink health
+    if (manifest.symlinks?.length && symlinkOps.isSymlinkSupported()) {
+      const symlinkResults = symlinkOps.validateSymlinks(manifest.symlinks, root);
+      for (const result of symlinkResults) {
+        if (result.status === 'broken' || result.status === 'missing' || result.status === 'wrong_target') {
+          details.brokenSymlinksList.push(result);
+          brokenSymlinks = true;
+        }
+      }
+    }
+  }
+
+  // Needs upgrade if has old structure or missing new structure pieces or skills out of sync
+  const needsUpgrade = hasOldStructure ||
+    (details.hasAgents && (!details.hasSkills || !details.hasPlansLocal || !details.hasClaudeSkills)) ||
+    skillsOutOfSync || brokenSymlinks;
+
+  return { needsUpgrade, hasOldStructure, skillsOutOfSync, brokenSymlinks, details };
 }
 
 /**
@@ -92,11 +130,18 @@ function determineAction(root) {
     return { action: 'scaffold', reason: 'No existing framework detected' };
   }
 
-  const { needsUpgrade, hasOldStructure } = analyzeStructure(root);
+  const { needsUpgrade, hasOldStructure, skillsOutOfSync, brokenSymlinks, details } = analyzeStructure(root);
 
   if (needsUpgrade) {
     if (hasOldStructure) {
       return { action: 'upgrade', reason: 'Old framework structure detected' };
+    }
+    if (skillsOutOfSync) {
+      const missing = details.missingSkills.join(', ');
+      return { action: 'upgrade', reason: `New skills available: ${missing}` };
+    }
+    if (brokenSymlinks) {
+      return { action: 'upgrade', reason: 'Broken or missing symlinks detected' };
     }
     return { action: 'upgrade', reason: 'Framework missing latest features' };
   }

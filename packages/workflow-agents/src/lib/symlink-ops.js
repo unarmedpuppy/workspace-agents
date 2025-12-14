@@ -118,9 +118,65 @@ function createSymlinks(specs, root, options = {}) {
   return results;
 }
 
+/**
+ * Validate symlinks - check for broken, stale, or incorrect links
+ * @param {Array<{target: string, link: string}>} specs - Expected symlink specifications
+ * @param {string} root - Root directory (links are relative to this)
+ * @returns {Array<{link: string, status: 'valid'|'broken'|'missing'|'wrong_target', expected: string, actual: string|null}>}
+ */
+function validateSymlinks(specs, root) {
+  const results = [];
+
+  for (const spec of specs) {
+    const linkPath = path.join(root, spec.link);
+    const result = { link: spec.link, expected: spec.target, actual: null };
+
+    if (!fs.existsSync(linkPath)) {
+      // Check if it's a broken symlink (lstat will succeed but stat will fail)
+      try {
+        fs.lstatSync(linkPath);
+        result.status = 'broken';
+      } catch (e) {
+        result.status = 'missing';
+      }
+    } else {
+      try {
+        const actualTarget = fs.readlinkSync(linkPath);
+        result.actual = actualTarget;
+        if (actualTarget === spec.target) {
+          result.status = 'valid';
+        } else {
+          result.status = 'wrong_target';
+        }
+      } catch (e) {
+        // Not a symlink - it's a regular file/directory
+        result.status = 'wrong_target';
+        result.actual = '(not a symlink)';
+      }
+    }
+
+    results.push(result);
+  }
+
+  return results;
+}
+
+/**
+ * Check if symlink target directory exists
+ * @param {string} linkPath - Path where symlink is/will be
+ * @param {string} target - Relative target path
+ * @returns {boolean}
+ */
+function symlinkTargetExists(linkPath, target) {
+  const resolvedTarget = path.resolve(path.dirname(linkPath), target);
+  return fs.existsSync(resolvedTarget);
+}
+
 module.exports = {
   isSymlinkSupported,
   isGitSymlinkEnabled,
   createSymlink,
-  createSymlinks
+  createSymlinks,
+  validateSymlinks,
+  symlinkTargetExists
 };
