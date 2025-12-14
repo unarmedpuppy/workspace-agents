@@ -92,12 +92,12 @@
       "link": ".claude/skills/plan-creator"
     },
     {
-      "target": "../../agents/skills/scaffold-workflow",
-      "link": ".claude/skills/scaffold-workflow"
+      "target": "../../agents/skills/scaffold-workspace",
+      "link": ".claude/skills/scaffold-workspace"
     },
     {
-      "target": "../../agents/skills/upgrade-workflow",
-      "link": ".claude/skills/upgrade-workflow"
+      "target": "../../agents/skills/upgrade-workspace",
+      "link": ".claude/skills/upgrade-workspace"
     }
   ],
   "gitignoreAppend": [

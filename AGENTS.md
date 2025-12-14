@@ -44,8 +44,8 @@ This project is a documentation framework with **executable skills** for determi
     ├── personas/                # Reusable agent personalities
     ├── skills/                  # Executable skills (was tools/)
     │   ├── skill-creator/       # Create Anthropic-compliant skills
-    │   ├── scaffold-workflow/   # Initialize framework
-    │   └── upgrade-workflow/    # Migrate existing structure
+    │   ├── scaffold-workspace/   # Initialize framework
+    │   └── upgrade-workspace/    # Migrate existing structure
     └── legacy/                  # Migrated files
 ```
 
@@ -124,8 +124,8 @@ Agent-discoverable skill guides are in `agents/skills/`:
 | Skill | Purpose |
 |-------|---------|
 | [skill-creator](agents/skills/skill-creator/) | Create, validate, and package Anthropic-compliant skills |
-| [scaffold-workflow](agents/skills/scaffold-workflow/) | Initialize complete framework in new projects |
-| [upgrade-workflow](agents/skills/upgrade-workflow/) | Migrate existing frameworks to latest structure |
+| [scaffold-workspace](agents/skills/scaffold-workspace/) | Initialize complete framework in new projects |
+| [upgrade-workspace](agents/skills/upgrade-workspace/) | Migrate existing frameworks to latest structure |
 | [plan-creator](agents/skills/plan-creator/) | Create consistent implementation plans |
 
 Each skill contains:

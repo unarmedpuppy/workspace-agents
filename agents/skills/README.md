@@ -7,8 +7,8 @@ Anthropic-compliant skills for AI agents. Each skill follows the Anthropic Skill
 | Skill | Description | Commands |
 |-------|-------------|----------|
 | [skill-creator](skill-creator/) | Create, validate, and package Anthropic-compliant skills | `init`, `validate`, `package` |
-| [scaffold-workflow](scaffold-workflow/) | Initialize complete framework structure in new projects | `scaffold` |
-| [upgrade-workflow](upgrade-workflow/) | Migrate existing frameworks to latest structure | `upgrade` |
+| [scaffold-workspace](scaffold-workspace/) | Initialize complete framework structure in new projects | `scaffold` |
+| [upgrade-workspace](upgrade-workspace/) | Migrate existing frameworks to latest structure | `upgrade` |
 | [plan-creator](plan-creator/) | Create consistent implementation plans for AI agents | `create`, `validate`, `export` |
 
 ## Quick Start

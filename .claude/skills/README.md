@@ -11,8 +11,8 @@ Claude Code (Anthropic's AI-powered IDE) automatically detects and loads skills 
 | Skill | Description | Link Target |
 |-------|-------------|-------------|
 | skill-creator | Create, validate, and package Anthropic-compliant skills | ../../agents/skills/skill-creator |
-| scaffold-workflow | Initialize complete framework structure in new projects | ../../agents/skills/scaffold-workflow |
-| upgrade-workflow | Migrate existing frameworks to latest structure | ../../agents/skills/upgrade-workflow |
+| scaffold-workspace | Initialize complete framework structure in new projects | ../../agents/skills/scaffold-workspace |
+| upgrade-workspace | Migrate existing frameworks to latest structure | ../../agents/skills/upgrade-workspace |
 | plan-creator | Create consistent implementation plans for AI agents | ../../agents/skills/plan-creator |
 
 ## How It Works
@@ -86,8 +86,8 @@ If symlinks fail, manually create junctions:
 
 ```cmd
 mklink /J .claude\skills\skill-creator ..\..\agents\skills\skill-creator
-mklink /J .claude\skills\scaffold-workflow ..\..\agents\skills\scaffold-workflow
-mklink /J .claude\skills\upgrade-workflow ..\..\agents\skills\upgrade-workflow
+mklink /J .claude\skills\scaffold-workspace ..\..\agents\skills\scaffold-workspace
+mklink /J .claude\skills\upgrade-workspace ..\..\agents\skills\upgrade-workspace
 mklink /J .claude\skills\plan-creator ..\..\agents\skills\plan-creator
 ```
 

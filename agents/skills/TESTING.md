@@ -1,6 +1,6 @@
 # Testing Guide
 
-Comprehensive testing documentation for scaffold-workflow and upgrade-workflow skills.
+Comprehensive testing documentation for scaffold-workspace and upgrade-workspace skills.
 
 ## Overview
 
@@ -16,7 +16,7 @@ Both skills include dry-run test scripts that validate functionality without mod
 ### Test Scaffold Workflow
 
 ```bash
-cd agents/skills/scaffold-workflow
+cd agents/skills/scaffold-workspace
 npm test
 ```
 
@@ -30,7 +30,7 @@ This validates:
 ### Test Upgrade Workflow
 
 ```bash
-cd agents/skills/upgrade-workflow
+cd agents/skills/upgrade-workspace
 npm test
 ```
 
@@ -55,7 +55,7 @@ This validates:
 
 **Output:**
 ```
-🧪 Testing scaffold-workflow (dry-run mode)
+🧪 Testing scaffold-workspace (dry-run mode)
 
 📦 Test 1: Clean directory scaffold
   ✓ Would create directories:
@@ -80,14 +80,14 @@ This validates:
 
 📦 Test 2: Existing agents/ directory (should fail)
   ✓ Would detect existing agents/ directory
-  ✓ Would suggest: Use upgrade-workflow skill instead
+  ✓ Would suggest: Use upgrade-workspace skill instead
 
 📦 Test 3: Project metadata detection
   ✓ Would detect project name: test-scaffold-project
   ✓ Would use creation date: 2025-12-10
   ✓ Would replace template variables
 
-✅ All scaffold-workflow tests passed!
+✅ All scaffold-workspace tests passed!
 ```
 
 **Custom test directory:**
@@ -107,7 +107,7 @@ npm test -- /tmp/my-custom-test-dir
 
 **Output:**
 ```
-🧪 Testing upgrade-workflow (dry-run mode)
+🧪 Testing upgrade-workspace (dry-run mode)
 
 🔧 Setup: Creating old framework structure
   ✓ Created old structure:
@@ -141,7 +141,7 @@ npm test -- /tmp/my-custom-test-dir
     - Files moved (old → new paths)
     - Rollback instructions
 
-✅ All upgrade-workflow tests passed!
+✅ All upgrade-workspace tests passed!
 ```
 
 **Custom test directory:**
@@ -203,19 +203,19 @@ jobs:
           node-version: '18'
       
       - name: Install scaffold dependencies
-        working-directory: agents/skills/scaffold-workflow
+        working-directory: agents/skills/scaffold-workspace
         run: npm install
       
-      - name: Test scaffold-workflow
-        working-directory: agents/skills/scaffold-workflow
+      - name: Test scaffold-workspace
+        working-directory: agents/skills/scaffold-workspace
         run: npm test
       
       - name: Install upgrade dependencies
-        working-directory: agents/skills/upgrade-workflow
+        working-directory: agents/skills/upgrade-workspace
         run: npm install
       
-      - name: Test upgrade-workflow
-        working-directory: agents/skills/upgrade-workflow
+      - name: Test upgrade-workspace
+        working-directory: agents/skills/upgrade-workspace
         run: npm test
 ```
 
@@ -278,7 +278,7 @@ await testGitIgnoreCreation(testDir);
 
 **Solution**:
 ```bash
-cd agents/skills/scaffold-workflow  # or upgrade-workflow
+cd agents/skills/scaffold-workspace  # or upgrade-workspace
 npm install
 ```
 
@@ -299,8 +299,8 @@ chmod +x agents/skills/*/scripts/test-*.js
 
 ## Related Documentation
 
-- [scaffold-workflow/SKILL.md](../scaffold-workflow/SKILL.md) - Full scaffold documentation
-- [upgrade-workflow/SKILL.md](../upgrade-workflow/SKILL.md) - Full upgrade documentation
+- [scaffold-workspace/SKILL.md](../scaffold-workspace/SKILL.md) - Full scaffold documentation
+- [upgrade-workspace/SKILL.md](../upgrade-workspace/SKILL.md) - Full upgrade documentation
 - [skill-creator/SKILL.md](../skill-creator/SKILL.md) - Creating new skills
 
 ## Validation
@@ -310,10 +310,10 @@ After running tests, validate the skills themselves:
 ```bash
 # Validate scaffold skill
 cd agents/skills/skill-creator
-npm run validate ../scaffold-workflow
+npm run validate ../scaffold-workspace
 
 # Validate upgrade skill
-npm run validate ../upgrade-workflow
+npm run validate ../upgrade-workspace
 ```
 
 ## Next Steps

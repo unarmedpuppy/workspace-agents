@@ -37,8 +37,8 @@ This framework provides a **deterministic, executable approach** to setting up A
 
 ### What You Get
 
-- **scaffold-workflow** skill - Initialize complete framework in new projects
-- **upgrade-workflow** skill - Migrate existing frameworks to new structure
+- **scaffold-workspace** skill - Initialize complete framework in new projects
+- **upgrade-workspace** skill - Migrate existing frameworks to new structure
 - **skill-creator** skill - Create new Anthropic-compliant skills
 - Complete documentation structure with progressive disclosure
 - Task management and planning workflows
@@ -88,8 +88,8 @@ your-project/
     │   │   ├── package.json     # Dependencies and scripts
     │   │   ├── scripts/         # Executable scripts
     │   │   └── references/      # Deep documentation
-    │   ├── scaffold-workflow/   # Initialize framework in new projects
-    │   └── upgrade-workflow/    # Migrate existing frameworks
+    │   ├── scaffold-workspace/   # Initialize framework in new projects
+    │   └── upgrade-workspace/    # Migrate existing frameworks
     └── legacy/                  # Migrated legacy files
         ├── .gitkeep
         ├── README.md            # Legacy directory explanation
@@ -222,8 +222,8 @@ Agent-discoverable skill guides are in `agents/skills/`:
 | Skill | Purpose |
 |-------|---------|
 | [skill-creator](agents/skills/skill-creator/) | Create, validate, and package Anthropic-compliant skills |
-| [scaffold-workflow](agents/skills/scaffold-workflow/) | Initialize complete framework in new projects |
-| [upgrade-workflow](agents/skills/upgrade-workflow/) | Migrate existing frameworks to latest structure |
+| [scaffold-workspace](agents/skills/scaffold-workspace/) | Initialize complete framework in new projects |
+| [upgrade-workspace](agents/skills/upgrade-workspace/) | Migrate existing frameworks to latest structure |
 | [plan-creator](agents/skills/plan-creator/) | Create consistent implementation plans |
 
 Each skill contains:
@@ -948,10 +948,10 @@ For developing the framework itself:
 
 ```bash
 # Scaffold
-node agents/skills/scaffold-workflow/scripts/scaffold.js [project-root]
+node agents/skills/scaffold-workspace/scripts/scaffold.js [project-root]
 
 # Upgrade
-node agents/skills/upgrade-workflow/scripts/upgrade.js [project-root]
+node agents/skills/upgrade-workspace/scripts/upgrade.js [project-root]
 
 # Create skill
 npm run init --prefix agents/skills/skill-creator

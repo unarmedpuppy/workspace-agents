@@ -36,8 +36,8 @@ agents/
 └── skills/                  # Executable skills (was tools/)
     ├── README.md                # Skills directory index
     ├── skill-creator/           # Create Anthropic-compliant skills
-    ├── scaffold-workflow/       # Initialize framework in new projects
-    ├── upgrade-workflow/        # Migrate existing frameworks
+    ├── scaffold-workspace/       # Initialize framework in new projects
+    ├── upgrade-workspace/        # Migrate existing frameworks
     └── git/                     # Git workflow and coordination
         └── SKILL.md             # Git skill documentation
 ```
@@ -90,7 +90,7 @@ Executable skills with scripts and dependencies (was tools/):
 - Optional: `package.json` for dependencies and npm scripts
 - Optional: `scripts/` directory for executable implementations
 - Optional: `references/` for deep documentation
-- Examples: skill-creator, scaffold-workflow, upgrade-workflow, git
+- Examples: skill-creator, scaffold-workspace, upgrade-workspace, git
 
 ## Discovery Pattern
 
@@ -115,8 +115,8 @@ YAML frontmatter in tools, personas, and plans enables semantic discovery withou
 | Audit documentation standards | `personas/documentation-agent.md` | Check YAML frontmatter, fix formatting |
 | Migrate old structure | `legacy/` + `personas/documentation-agent.md` | Store old files, document migration |
 | Create new skill | `skills/skill-creator/` | Initialize Anthropic-compliant skill |
-| Scaffold new project | `skills/scaffold-workflow/` | Set up complete framework |
-| Upgrade existing project | `skills/upgrade-workflow/` | Migrate to latest structure |
+| Scaffold new project | `skills/scaffold-workspace/` | Set up complete framework |
+| Upgrade existing project | `skills/upgrade-workspace/` | Migrate to latest structure |
 
 ## Maintenance
 
