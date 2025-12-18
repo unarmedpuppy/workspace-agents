@@ -26,8 +26,7 @@ After scaffolding, your project contains:
 ├── .claude/skills/              # Symlinks to your skills
 └── agents/
     ├── reference/               # Topic documentation
-    ├── plans/                   # Implementation plans
-    │   ├── tasks.md             # Task tracking
+    ├── plans/                   # Implementation plans (with embedded tasks)
     │   ├── local/               # Local scratch (gitignored)
     │   └── getting-started.md   # This file
     ├── personas/                # Agent behaviors
@@ -56,7 +55,7 @@ After scaffolding, your project contains:
 2. Updates AGENTS.md with real project information
 3. Creates relevant reference documents
 4. Builds a development-agent.md persona
-5. Populates tasks.md with recommendations
+5. Creates improvement plans with recommendations
 
 ### Phase 2: Customize AGENTS.md
 
@@ -154,13 +153,13 @@ Use `/skill skill-creator` to create skills for tasks that:
 - [ ] Document usage with examples
 - [ ] Symlinks auto-created in `.claude/skills/`
 
-### Phase 6: Set Up Task Tracking
+### Phase 6: Create Implementation Plans
 
-**Goal**: Use `agents/plans/tasks.md` for ongoing work.
+**Goal**: Use `agents/plans/` for tracking work with embedded task checklists.
 
-- [ ] Review tasks discovered by workspace-builder
-- [ ] Add your own backlog items
-- [ ] Create plans in `agents/plans/` for complex features
+- [ ] Review plans created by workspace-builder
+- [ ] Create new plans using `/skill plan-creator`
+- [ ] Each plan contains its own task checklist
 
 ## Maintenance
 
@@ -201,7 +200,7 @@ As your project grows:
 ### Recommended (Do Soon)
 - [ ] Create development-agent.md (if not auto-created)
 - [ ] Add 1-2 project-specific reference docs
-- [ ] Review and prioritize tasks.md items
+- [ ] Review improvement plans created by workspace-builder
 
 ### Optional (Do As Needed)
 - [ ] Create domain-specific personas

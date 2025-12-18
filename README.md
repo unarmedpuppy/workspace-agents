@@ -77,8 +77,7 @@ your-project/
     │   ├── agent-patterns.md    # Agent development patterns
     │   ├── documentation-style.md # Documentation standards
     │   └── plan_act.md          # Plan → Act → Test workflow
-    ├── plans/                   # Implementation plans and active work
-    │   ├── tasks.md             # Active task tracking
+    ├── plans/                   # Implementation plans (with embedded tasks)
     │   ├── getting-started.md   # Workspace customization guide
     │   ├── local/               # Local scratch plans (gitignored)
     │   └── <feature-name>.md    # Shared plans (committed)
@@ -109,7 +108,6 @@ your-project/
 | Old Path | New Path | Reason |
 |----------|----------|--------|
 | `agents/tools/` | `agents/skills/` | Aligns with Anthropic Agent Skills terminology |
-| `agents/tasks.md` | `agents/plans/tasks.md` | Unified workflow (plans contain tasks) |
 | `plans-local/` | `agents/plans/local/` | Clearer hierarchy (ephemeral plans under plans/) |
 | `agents/personas/meta-agent.md` | `agents/personas/workspace-builder.md` | More descriptive, action-oriented persona |
 
@@ -225,7 +223,6 @@ Each skill contains:
 
 | Document | Purpose |
 |----------|---------|
-| `agents/plans/tasks.md` | Active work tracking |
 | `agents/plans/getting-started.md` | Workspace customization guide |
 | `agents/reference/plan_act.md` | Plan → Act → Test workflow |
 | `agents/skills/` | Skill-specific guides |
@@ -393,58 +390,15 @@ agents/skills/tool-name/
 
 ---
 
-## Task Management
-
-### Task Directory Structure
-
-```
-agents/plans/
-├── tasks.md              # Current active tasks
-└── local/                # Gitignored scratch work
-```
-
-### agents/plans/tasks.md Structure
-
-```markdown
-# Active Tasks
-
-Track current work items and their status.
-
-## Tasks
-
-### Task Name
-
-**Status**: `TODO` | **Priority**: Medium
-
-**Description**: What needs to be done
-
-**Acceptance Criteria**:
-- [ ] Criterion 1
-- [ ] Criterion 2
-
-**Files to Modify**:
-- `path/to/file.ts`
-
-## Status Values
-
-- `TODO` - Ready to start
-- `IN PROGRESS` - Currently being worked on
-- `DONE` - Completed
-- `BLOCKED` - Waiting on dependencies
-```
-
----
-
 ## Plan Management
 
-Plans separate collaborative documentation from local scratch work, preventing every agent thought from being committed to git.
+Plans contain both the implementation design and task checklists. Each plan is self-contained with embedded tasks.
 
 ### Directory Structure
 
 ```
 agents/
-└── plans/                    # Implementation plans
-    ├── tasks.md              # Active work tracking
+└── plans/                    # Implementation plans (with embedded tasks)
     ├── getting-started.md    # Workspace customization guide
     ├── auth-system.md        # Committed - shared plans
     ├── api-redesign.md
@@ -608,7 +562,7 @@ framework to match the specific needs of this project.
 2. Customize AGENTS.md with real project information
 3. Create relevant reference documents in agents/reference/
 4. Build a development-agent.md persona tailored to the project
-5. Populate tasks.md with actionable recommendations
+5. Create implementation plans with actionable recommendations
 6. Update all documentation to reflect actual project patterns
 ```
 
@@ -762,11 +716,8 @@ Embed this workflow in your AGENTS.md or reference it from `agents/plan_act.md`.
 | `agents/reference/typescript.md` | Language-specific patterns | Recommended |
 | `agents/reference/agent-patterns.md` | Agent development patterns | As needed |
 | `agents/reference/plan_act.md` | Plan → Act → Test workflow | Recommended |
-| `agents/plans/tasks.md` | Active task tracking | Recommended |
+| `agents/plans/` | Implementation plans with embedded tasks | Recommended |
 | `agents/plans/getting-started.md` | Workspace customization guide | Recommended |
-| `agents/plans/archive/` | Completed task phases | Recommended |
-| `agents/plans/templates/` | Task templates | Recommended |
-| `agents/plans/` | Shared implementation plans | Recommended |
 | `agents/plans/local/` | Local scratch plans (gitignored) | Recommended |
 | `agents/legacy/` | Migrated legacy files (gitignored except MIGRATION.md) | As needed |
 | `agents/legacy/README.md` | Legacy directory explanation and migration guide | If legacy exists |
@@ -797,7 +748,7 @@ Embed this workflow in your AGENTS.md or reference it from `agents/plan_act.md`.
 
 ### For Solo Developers
 
-- Keep `agents/plans/tasks.md` as a personal todo list
+- Keep plans simple - single-file plans work fine for small projects
 - Skill directories optional - flat files work fine for small projects
 
 ### For Teams

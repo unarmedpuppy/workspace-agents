@@ -14,7 +14,7 @@ After `npx workspace-agents init` scaffolds the basic structure, you perform a d
 1. **Customize** all scaffolded documentation to match the project
 2. **Create** project-specific reference documents
 3. **Build** a development-agent persona with full codebase expertise
-4. **Populate** tasks.md with discovered improvements and recommendations
+4. **Create** implementation plans with discovered improvements and recommendations
 
 ## When to Invoke
 
@@ -251,11 +251,20 @@ You are the Development Agent for {{PROJECT_NAME}}. You have comprehensive knowl
 - [AGENTS.md](../../AGENTS.md) - Project overview
 ```
 
-### Phase 5: Populate tasks.md
+### Phase 5: Create Implementation Plans
 
-After analysis, add discovered recommendations:
+After analysis, create plans for discovered improvements using `/skill plan-creator`:
 
 ```markdown
+---
+title: Codebase Improvements
+created: YYYY-MM-DD
+status: draft
+type: refactor
+---
+
+# Plan: Codebase Improvements
+
 ## Discovered During Onboarding
 
 ### Code Quality
@@ -282,7 +291,7 @@ After running workspace-builder, verify:
 - [ ] **AGENTS.md** - Customized with real project info
 - [ ] **agents/reference/** - Contains relevant reference docs
 - [ ] **agents/personas/development-agent.md** - Comprehensive dev guide
-- [ ] **agents/plans/tasks.md** - Populated with recommendations
+- [ ] **agents/plans/** - Contains improvement plans with task checklists
 - [ ] **agents/README.md** - Updated to reflect actual structure
 
 ## Example Session
@@ -318,7 +327,7 @@ This is a Next.js 14 e-commerce application using:
    - agents/reference/auth.md - NextAuth configuration
    - agents/reference/testing.md - Test patterns
 3. **Creating development-agent.md** with full codebase knowledge
-4. **Adding to tasks.md**:
+4. **Creating improvement plan**:
    - 3 test coverage gaps found
    - 2 deprecated dependencies
    - 5 enhancement suggestions

@@ -63,7 +63,6 @@ Create a new reference doc when:
 - One-off tasks (use plans instead)
 - Executable actions (use skills instead)
 - Agent personalities (use personas instead)
-- Active work tracking (use tasks.md)
 
 ## Reference Types
 

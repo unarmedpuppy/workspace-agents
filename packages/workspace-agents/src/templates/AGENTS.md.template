@@ -34,8 +34,7 @@ git push origin <branch>    # Push to remote
 └── agents/                      # Deep documentation
     ├── README.md                # Directory index
     ├── reference/               # Topic-focused documentation
-    ├── plans/                   # Implementation plans
-    │   ├── tasks.md             # Active work index
+    ├── plans/                   # Implementation plans (with embedded tasks)
     │   └── local/               # Ephemeral plans (gitignored)
     ├── personas/                # Reusable agent personalities
     └── skills/                  # Executable skills

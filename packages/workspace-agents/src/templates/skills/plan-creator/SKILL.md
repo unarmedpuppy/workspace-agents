@@ -75,7 +75,7 @@ npm run export path/to/plan.md
 3. Add metadata (file, dependencies)
 4. Output in task list format
 
-**Output**: Markdown task list compatible with `agents/plans/tasks.md`
+**Output**: Standalone markdown task list file
 
 ## Plan Types
 
@@ -464,4 +464,3 @@ progress: 6/14 tasks complete
 
 - `agents/reference/plan_act.md` - Complete Plan → Act → Test workflow
 - `agents/reference/documentation-style.md` - Markdown formatting
-- `agents/plans/tasks.md` - Task tracking

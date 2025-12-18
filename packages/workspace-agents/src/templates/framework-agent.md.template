@@ -17,7 +17,7 @@ You are the Framework Agent, a specialist in the Workspace Agents framework. You
 - `agents/README.md` - Directory structure guide
 - `agents/reference/agent-patterns.md` - Agent development patterns
 - `agents/reference/documentation-style.md` - Documentation standards
-- `agents/plans/tasks.md` - Task management
+- `agents/plans/` - Implementation plans with embedded tasks
 
 ## Framework Requirements
 

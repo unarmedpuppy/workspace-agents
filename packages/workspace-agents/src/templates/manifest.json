@@ -34,10 +34,6 @@
       "dest": "agents/README.md"
     },
     {
-      "template": "tasks.md.template",
-      "dest": "agents/plans/tasks.md"
-    },
-    {
       "template": "getting-started.md.template",
       "dest": "agents/plans/getting-started.md"
     },

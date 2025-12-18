@@ -8,8 +8,7 @@ Deep documentation and workflows for AI-assisted development.
 agents/
 ├── README.md           # This file - directory index
 ├── reference/          # Topic-focused documentation
-├── plans/              # Implementation plans
-│   ├── tasks.md        # Active work index
+├── plans/              # Implementation plans (with embedded tasks)
 │   └── local/          # Ephemeral plans (gitignored)
 ├── personas/           # Reusable agent personalities
 ├── skills/             # Executable skills
@@ -30,13 +29,11 @@ Topic-focused guides for specific patterns and practices:
 
 ## Plans
 
-### Active Work (`plans/tasks.md`)
-
-Index of current tasks and their status.
+Implementation plans with embedded task checklists. Use `/skill plan-creator` to create new plans.
 
 ### Committed Plans (`plans/`)
 
-Multi-session implementation plans that are shared across the team.
+Multi-session implementation plans that are shared across the team. Each plan contains its own task checklist.
 
 ### Local Plans (`plans/local/`)
 
