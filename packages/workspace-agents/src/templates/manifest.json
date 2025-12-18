@@ -34,8 +34,16 @@
       "dest": "agents/README.md"
     },
     {
+      "template": "plans-README.md.template",
+      "dest": "agents/plans/README.md"
+    },
+    {
       "template": "getting-started.md.template",
       "dest": "agents/plans/getting-started.md"
+    },
+    {
+      "template": "reference-README.md.template",
+      "dest": "agents/reference/README.md"
     },
     {
       "template": "plan_act.md.template",
