@@ -118,11 +118,11 @@ npm run init
 ### Validate existing skill
 
 ```bash
-npm run validate ../scaffold-workspace
+npm run validate ../plan-creator
 
 ✓ SKILL.md exists
 ✓ Frontmatter valid
-✓ Name valid: scaffold-workspace
+✓ Name valid: plan-creator
 ✓ Description complete
 ✓ No auxiliary files
 ✓ Structure valid
@@ -133,11 +133,11 @@ Skill is valid!
 ### Package for distribution
 
 ```bash
-npm run package ../scaffold-workspace
+npm run package ../plan-creator
 
 ✓ Validation passed
 ✓ Creating .skill file...
-✓ Packaged: dist/scaffold-workspace.skill (42.3 KB)
+✓ Packaged: dist/plan-creator.skill (42.3 KB)
 ```
 
 ## Troubleshooting

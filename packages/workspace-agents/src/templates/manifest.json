@@ -62,6 +62,10 @@
       "dest": "agents/reference/typescript.md"
     },
     {
+      "template": "skill-patterns.md.template",
+      "dest": "agents/reference/skill-patterns.md"
+    },
+    {
       "template": "personas-README.md.template",
       "dest": "agents/personas/README.md"
     },
@@ -106,14 +110,6 @@
     {
       "target": "../../agents/skills/plan-creator",
       "link": ".claude/skills/plan-creator"
-    },
-    {
-      "target": "../../agents/skills/scaffold-workspace",
-      "link": ".claude/skills/scaffold-workspace"
-    },
-    {
-      "target": "../../agents/skills/upgrade-workspace",
-      "link": ".claude/skills/upgrade-workspace"
     },
     {
       "target": "../../agents/skills/persona-creator",
