@@ -50,10 +50,6 @@
       "dest": "agents/reference/agent-patterns.md"
     },
     {
-      "template": "skill-patterns.md.template",
-      "dest": "agents/reference/skill-patterns.md"
-    },
-    {
       "template": "typescript.md.template",
       "dest": "agents/reference/typescript.md"
     },
