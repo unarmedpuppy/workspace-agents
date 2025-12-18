@@ -64,16 +64,6 @@ This provides templates for:
 
 See `agents/skills/plan-creator/SKILL.md` for complete documentation.
 
-## Task Claiming
-
-See `agents/plans/tasks.md` for available work.
-
-**Protocol**:
-1. Pull latest: `git pull origin main`
-2. Edit task frontmatter: `claimed_by: @your-id`
-3. Commit and push
-4. Create feature branch
-
 ## Best Practices
 
 - **Plan first** for non-trivial work

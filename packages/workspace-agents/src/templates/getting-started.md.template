@@ -160,7 +160,6 @@ Use `/skill skill-creator` to create skills for tasks that:
 
 - [ ] Review tasks discovered by workspace-builder
 - [ ] Add your own backlog items
-- [ ] Use task claiming protocol for team coordination
 - [ ] Create plans in `agents/plans/` for complex features
 
 ## Maintenance

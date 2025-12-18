@@ -168,7 +168,6 @@ See `agents/code_style_guide.md` for complete guidelines.
 ### Always Do
 - Run tests before committing
 - Follow the code style guide
-- Update task status when claiming/completing work
 - Commit after each logical unit of work
 
 ### Ask First
@@ -201,27 +200,7 @@ Store plans in `agents/plans/` (shared) or `agents/plans/local/` (local only):
   - Simple plans: `agents/plans/feature-name.md` for single-file plans
 - **`agents/plans/local/`** - Gitignored scratch work, session notes, exploratory analysis
 
-See `agents/plan_act.md` for plan templates and workflow details.
-
-### Task Claiming (Multi-Agent)
-
-See `agents/tasks.md` for available work. Protocol:
-
-```bash
-# 1. Pull latest
-git pull origin main
-
-# 2. Claim task (edit agents/tasks.md)
-# Change [AVAILABLE] → [CLAIMED by @your-id]
-
-# 3. Commit and push within 1 minute
-git add agents/tasks.md
-git commit -m "claim: Task X - Description"
-git push origin main
-
-# 4. Create feature branch
-git checkout -b feature/task-x-description
-```
+See `agents/reference/plan_act.md` for plan templates and workflow details.
 
 ## Skill Documentation
 
@@ -350,8 +329,8 @@ Use YAML frontmatter for agent discovery:
 ```markdown
 ---
 name: git
-description: Git workflow and multi-agent coordination
-when_to_use: Version control, branching, committing, multi-agent task claiming
+description: Git workflow and version control
+when_to_use: Version control, branching, committing
 ---
 
 # Git Workflow
@@ -420,82 +399,39 @@ agents/skills/tool-name/
 
 ```
 agents/plans/
-├── tasks.md              # Current active tasks (main file)
-├── archive/              # Completed task phases/milestones
-│   └── phase-3.md        # Example: archived phase documentation
-└── templates/
-    └── task-template.md  # Template for new tasks
+├── tasks.md              # Current active tasks
+└── local/                # Gitignored scratch work
 ```
 
 ### agents/plans/tasks.md Structure
 
 ```markdown
-# Tasks
+# Active Tasks
 
-Task tracking for [Project Name].
+Track current work items and their status.
 
-**Status**: [Current phase/milestone]
-**Last Updated**: [Date]
+## Tasks
 
-## Task Claiming Protocol
+### Task Name
 
-```bash
-# 1. Pull latest
-git pull origin main
+**Status**: `TODO` | **Priority**: Medium
 
-# 2. Check task status - only claim [AVAILABLE] tasks
+**Description**: What needs to be done
 
-# 3. Edit this file: change [AVAILABLE] → [CLAIMED by @your-id]
-
-# 4. Commit and push within 1 minute (creates "lock")
-git add agents/plans/tasks.md
-git commit -m "claim: Task X - Description"
-git push origin main
-
-# 5. Create feature branch
-git checkout -b feature/task-x-description
-```
-
-## Task Status Legend
-
-- `[AVAILABLE]` - Ready to claim
-- `[CLAIMED by @id]` - Locked by an agent
-- `[IN PROGRESS - X%]` - Work underway
-- `[COMPLETE]` - Finished
-- `[BLOCKED]` - Waiting on dependency
-
----
-
-## Current Tasks
-
-| Task | Description | Status | Priority |
-|------|-------------|--------|----------|
-| 1.1 | [description] | [AVAILABLE] | P0 |
-| 1.2 | [description] | [AVAILABLE] | P1 |
-
-### Task 1.1: [Title]
-**Priority**: P0
-**Dependencies**: None
-**Effort**: [estimate]
-
-**Objective**: [What needs to be done]
-
-**Files to modify**:
-- `path/to/file.ts`
-
-**Success Criteria**:
+**Acceptance Criteria**:
 - [ ] Criterion 1
 - [ ] Criterion 2
+
+**Files to Modify**:
+- `path/to/file.ts`
+
+## Status Values
+
+- `TODO` - Ready to start
+- `IN PROGRESS` - Currently being worked on
+- `DONE` - Completed
+- `BLOCKED` - Waiting on dependencies
 ```
-
-### When to Archive Tasks
-
-Move completed phases/milestones to `agents/plans/archive/` when:
-- A major milestone is complete
-- The main tasks.md becomes too long (>500 lines)
-- Starting a new project phase
-
-Keep task history for reference without cluttering active task tracking.
 
 ---
 
@@ -861,13 +797,11 @@ Embed this workflow in your AGENTS.md or reference it from `agents/plan_act.md`.
 
 ### For Solo Developers
 
-- Skip multi-agent task claiming (simpler workflow)
-- Keep `agents/tasks.md` as a personal todo list
-- Tool directories optional - flat files work fine for small projects
+- Keep `agents/plans/tasks.md` as a personal todo list
+- Skill directories optional - flat files work fine for small projects
 
 ### For Teams
 
-- Enforce task claiming protocol strictly
 - Add PR templates referencing task IDs
 - Consider adding `agents/decisions.md` for architectural decision records
 
@@ -1001,33 +935,32 @@ This guide was validated against publicly documented best practices from major A
 
 | # | Enhancement | Description | Benefit |
 |---|-------------|-------------|---------|
-| 1 | **Tool directory structure** | `agents/skills/<name>/` with README.md + optional package.json | Discoverable tool docs with dependency tracking |
-| 2 | **Multi-agent task claiming** | Git-based locking protocol for concurrent workflows | Safe parallel agent work on same codebase |
-| 3 | **Integrated Plan → Act → Test** | Combines planning with task tracking and commit strategy | End-to-end workflow guidance |
-| 4 | **Comprehensive vendor matrix** | Single reference for Claude, Copilot, Cursor, Gemini | Easy multi-tool adoption |
-| 5 | **Public/local plan separation** | `agents/plans/` (committed) vs `agents/plans/local/` (gitignored) | Prevents committing every agent thought |
-| 6 | **Agent personas with workspace-builder** | Reusable personalities + customization agent | Self-customizing persona system |
-| 7 | **Split reference documentation** | `agents/reference/` with topic-focused files | Reduces context bloat, faster lookups |
-| 8 | **Task management structure** | `agents/plans/` with archive/ and templates/ | Scalable task tracking with history |
-| 9 | **Directory index** | `agents/README.md` explaining all subdirectories | Quick orientation for agents and humans |
+| 1 | **Skill directory structure** | `agents/skills/<name>/` with SKILL.md + optional package.json | Discoverable skill docs with dependency tracking |
+| 2 | **Integrated Plan → Act → Test** | Combines planning with task tracking and commit strategy | End-to-end workflow guidance |
+| 3 | **Comprehensive vendor matrix** | Single reference for Claude, Copilot, Cursor, Gemini | Easy multi-tool adoption |
+| 4 | **Public/local plan separation** | `agents/plans/` (committed) vs `agents/plans/local/` (gitignored) | Prevents committing every agent thought |
+| 5 | **Agent personas with workspace-builder** | Reusable personalities + customization agent | Self-customizing persona system |
+| 6 | **Split reference documentation** | `agents/reference/` with topic-focused files | Reduces context bloat, faster lookups |
+| 7 | **Creator skills** | Bundled skills for creating skills, plans, personas, references | Consistent formatting across artifacts |
+| 8 | **Directory index** | `agents/README.md` explaining all subdirectories | Quick orientation for agents and humans |
 
 ### Coverage Summary
 
 ```
 Industry Best Practices:     15/15 (100%)
-Unique Enhancements:         9 beyond standard
+Unique Enhancements:         8 beyond standard
 Vendor Support:              4 major tools (Claude, Copilot, Cursor, Gemini)
 ```
 
 ### Conclusion
 
-This framework achieves **100% alignment** with industry best practices while adding **9 unique enhancements** for local development workflows. The single-source-of-truth approach (AGENTS.md with vendor breadcrumbs) ensures consistency across tools without duplication.
+This framework achieves **100% alignment** with industry best practices while adding **8 unique enhancements** for local development workflows. The single-source-of-truth approach (AGENTS.md with vendor breadcrumbs) ensures consistency across tools without duplication.
 
 Key differentiators:
 - **Progressive disclosure** - Three-layer documentation (AGENTS.md → agents/README.md → agents/reference/)
-- **Multi-agent safety** - Git-based task claiming prevents conflicts
 - **Context efficiency** - Split reference docs reduce token usage
 - **Self-customizing** - Workspace-builder adapts framework to your project
+- **Creator skills** - Bundled skills ensure consistent artifact formatting
 
 ### Sources
 

@@ -464,5 +464,4 @@ progress: 6/14 tasks complete
 
 - `agents/reference/plan_act.md` - Complete Plan → Act → Test workflow
 - `agents/reference/documentation-style.md` - Markdown formatting
-- `agents/plans/tasks.md` - Task tracking and claiming
-- `agents/plans/templates/task-template.md` - Task format
+- `agents/plans/tasks.md` - Task tracking

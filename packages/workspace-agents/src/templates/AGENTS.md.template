@@ -50,7 +50,6 @@ See `agents/reference/documentation-style.md` for complete guidelines.
 ## Boundaries
 
 ### Always Do
-- Update task status when claiming/completing work (see `agents/plans/tasks.md`)
 - Keep AGENTS.md concise; move deep docs to `agents/reference/`
 - Use YAML frontmatter for discoverable resources
 - Test documentation changes by reading as an AI agent would
@@ -85,15 +84,6 @@ Store plans in `agents/plans/` (shared) or `agents/plans/local/` (local only):
 
 See `agents/reference/plan_act.md` for plan templates and workflow details.
 
-### Task Claiming (Multi-Agent)
-
-See `agents/plans/tasks.md` for available work. Protocol:
-
-1. Pull latest: `git pull origin main`
-2. Edit `agents/plans/tasks.md` - update frontmatter: `claimed_by: @your-id`
-3. Commit and push within 1 minute
-4. Create feature branch: `git checkout -b feature/task-description`
-
 ## Skills Documentation
 
 Agent-discoverable skills are in `agents/skills/`:
@@ -118,7 +108,6 @@ Each skill contains:
 |----------|---------|
 | `agents/README.md` | Directory index explaining all subdirectories |
 | `agents/reference/` | Topic-focused deep documentation |
-| `agents/plans/tasks.md` | Task list, claiming protocol, status |
 | `agents/plans/` | Shared implementation plans (committed) |
 | `agents/plans/local/` | Local scratch work (gitignored) |
 | `agents/personas/` | Reusable agent personalities |

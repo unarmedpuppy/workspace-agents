@@ -30,18 +30,9 @@ Structure documentation from general to specific:
 
 See `agents/reference/plan_act.md` for complete workflow.
 
-**Planning**: Create implementation plan before coding  
-**Acting**: Implement incrementally with frequent commits  
+**Planning**: Create implementation plan before coding
+**Acting**: Implement incrementally with frequent commits
 **Testing**: Verify before marking tasks complete
-
-### Task Claiming
-
-1. Read `agents/plans/tasks.md` for available work
-2. Update frontmatter: `claimed_by: @your-id`
-3. Commit and push (prevents conflicts)
-4. Create feature branch
-5. Work on task
-6. Mark complete when done
 
 ## Communication Patterns
 
