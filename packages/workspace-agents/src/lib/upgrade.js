@@ -44,6 +44,7 @@ async function plan(projectRoot, options = {}) {
     moves: [],
     modifications: [],
     creates: [],
+    newFiles: [],  // New template files that don't exist yet
     symlinks: [],
     legacy: [],
     skillsToCopy: [],
@@ -164,6 +165,20 @@ async function plan(projectRoot, options = {}) {
     }
   }
 
+  // Plan new template files (personas, plans, reference docs within agents/)
+  if (analysis.details.missingFiles?.length) {
+    for (const missingFile of analysis.details.missingFiles) {
+      const manifestFile = manifest.files.find(f => f.dest === missingFile);
+      if (manifestFile) {
+        changes.newFiles.push({
+          path: missingFile,
+          template: manifestFile.template,
+          variables
+        });
+      }
+    }
+  }
+
   // Plan legacy file handling - files that don't map to new structure
   const legacyPatterns = await findLegacyFiles(projectRoot, analysis);
   for (const file of legacyPatterns) {
@@ -243,7 +258,7 @@ async function apply(changes, projectRoot) {
     fs.writeFileSync(filePath, content, 'utf-8');
   }
 
-  // Create new files
+  // Create new files (critical files)
   for (const create of changes.creates) {
     if (create.isDir) {
       fileOps.ensureDir(path.join(projectRoot, create.path.replace(/\/$/, '')));
@@ -251,6 +266,15 @@ async function apply(changes, projectRoot) {
       const content = templateEngine.loadAndRender(create.template, create.variables);
       fileOps.writeFile(path.join(projectRoot, create.path), content);
     }
+  }
+
+  // Create new template files (personas, plans, reference docs)
+  for (const newFile of changes.newFiles || []) {
+    const destPath = path.join(projectRoot, newFile.path);
+    // Ensure parent directory exists
+    fileOps.ensureDir(path.dirname(destPath));
+    const content = templateEngine.loadAndRender(newFile.template, newFile.variables);
+    fileOps.writeFile(destPath, content);
   }
 
   // Create new symlinks

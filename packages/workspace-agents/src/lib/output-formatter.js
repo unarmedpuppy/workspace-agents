@@ -164,6 +164,11 @@ function printChanges(changes) {
       console.log();
     }
 
+    if (changes.newFiles?.length) {
+      changes.newFiles.forEach(f => console.log(formatFileCreate(f.path)));
+      console.log();
+    }
+
     if (changes.symlinks?.length) {
       changes.symlinks.forEach(s => console.log(formatSymlink(s.link, s.target)));
       console.log();
@@ -212,6 +217,9 @@ function formatSummary(changes) {
   }
   if (changes.skillsToCopy?.length) {
     parts.push(`${changes.skillsToCopy.length} skills`);
+  }
+  if (changes.newFiles?.length) {
+    parts.push(`${changes.newFiles.length} new files`);
   }
   if (changes.symlinks?.length) {
     parts.push(`${changes.symlinks.length} symlinks`);
