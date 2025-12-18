@@ -1,0 +1,220 @@
+# Getting Started with workflow-agents Agent Workspace
+
+This guide walks you through customizing your scaffolded workspace to make it truly useful for your project.
+
+## Quick Start
+
+Run this command in a new AI session:
+
+```
+@workspace-builder enhance my workspace
+```
+
+The workspace-builder persona will analyze your codebase and customize everything automatically.
+
+## What You Have
+
+After scaffolding, your project contains:
+
+```
+workflow-agents/
+├── AGENTS.md                    # Universal agent entrypoint (customize this!)
+├── CLAUDE.md                    # Claude Code breadcrumb → AGENTS.md
+├── GEMINI.md                    # Gemini breadcrumb → AGENTS.md
+├── .cursor/rules/               # Cursor breadcrumb
+├── .github/copilot-instructions.md  # Copilot breadcrumb
+├── .claude/skills/              # Symlinks to your skills
+└── agents/
+    ├── reference/               # Topic documentation
+    ├── plans/                   # Implementation plans (with embedded tasks)
+    │   ├── local/               # Local scratch (gitignored)
+    │   └── getting-started.md   # This file
+    ├── personas/                # Agent behaviors
+    │   ├── workspace-builder.md # Run first!
+    │   ├── documentation-agent.md
+    │   └── framework-agent.md
+    └── skills/                  # Executable skills
+        ├── skill-creator/
+        ├── plan-creator/
+        └── persona-creator/
+```
+
+## Customization Plan
+
+### Phase 1: Run Workspace Builder
+
+**Goal**: Transform generic templates into project-specific documentation.
+
+- [ ] Start a new AI session
+- [ ] Invoke: `@workspace-builder enhance my workspace`
+- [ ] Review the changes workspace-builder makes
+- [ ] Commit the customized files
+
+**What workspace-builder does**:
+1. Analyzes your codebase structure and tech stack
+2. Updates AGENTS.md with real project information
+3. Creates relevant reference documents
+4. Builds a development-agent.md persona
+5. Creates improvement plans with recommendations
+
+### Phase 2: Customize AGENTS.md
+
+**Goal**: Make AGENTS.md the authoritative guide for AI agents working on your project.
+
+- [ ] Review the Project Summary section - is it accurate?
+- [ ] Verify Tech Stack is complete
+- [ ] Update Quick Start commands
+- [ ] Add project-specific Architecture Overview
+- [ ] Document your Code Style conventions
+- [ ] Define Boundaries (Always Do / Ask First / Never Do)
+
+**Key principle**: AGENTS.md should be <300 lines. Move detailed docs to `agents/reference/`.
+
+### Phase 3: Create Project-Specific Personas
+
+**Goal**: Build specialized agents for your common workflows.
+
+Use `/skill persona-creator` or create manually in `agents/personas/`.
+
+**Consider creating personas for**:
+
+| Persona | When to Create |
+|---------|----------------|
+| `development-agent.md` | Your main coding assistant (workspace-builder creates this) |
+| `testing-agent.md` | Complex testing requirements |
+| `api-agent.md` | API design and implementation |
+| `database-agent.md` | Database/ORM expertise |
+| `security-agent.md` | Security-sensitive codebase |
+| `devops-agent.md` | CI/CD and deployment |
+| `[framework]-agent.md` | Framework-specific guidance (react-agent, django-agent) |
+
+**Persona checklist**:
+- [ ] Identify 2-3 common workflows that need specialized guidance
+- [ ] Create personas using `/skill persona-creator`
+- [ ] Include key files the persona should know
+- [ ] Document patterns and anti-patterns
+- [ ] Add "when to invoke" scenarios
+
+### Phase 4: Create Reference Documentation
+
+**Goal**: Document knowledge that doesn't fit in personas or skills.
+
+Reference docs live in `agents/reference/` and cover:
+- Architecture decisions
+- API patterns
+- Database schemas
+- Testing strategies
+- Deployment procedures
+- Third-party integrations
+
+**Consider creating references for**:
+
+| Reference | When to Create |
+|-----------|----------------|
+| `architecture.md` | Complex system design |
+| `api-patterns.md` | REST/GraphQL conventions |
+| `database.md` | Schema, migrations, queries |
+| `testing.md` | Test patterns and coverage |
+| `deployment.md` | CI/CD and infrastructure |
+| `security.md` | Auth, secrets, vulnerabilities |
+| `[technology].md` | Specific tech deep-dives |
+
+**Reference checklist**:
+- [ ] Identify knowledge that agents frequently need
+- [ ] Create focused reference docs (one topic per file)
+- [ ] Include code examples from your actual codebase
+- [ ] Document gotchas and common mistakes
+- [ ] Link from AGENTS.md and relevant personas
+
+### Phase 5: Build Custom Skills
+
+**Goal**: Create executable, repeatable functionality.
+
+Use `/skill skill-creator` to create skills for tasks that:
+- Are performed repeatedly
+- Have consistent steps
+- Benefit from automation
+- Need to be shared across the team
+
+**Consider creating skills for**:
+
+| Skill | Purpose |
+|-------|---------|
+| `component-creator` | Generate new components with tests |
+| `api-endpoint` | Scaffold new API endpoints |
+| `migration-creator` | Create database migrations |
+| `test-generator` | Generate test scaffolds |
+| `release-notes` | Generate changelogs |
+
+**Skill checklist**:
+- [ ] Identify repetitive tasks that follow patterns
+- [ ] Create skills using `/skill skill-creator`
+- [ ] Include validation and error handling
+- [ ] Document usage with examples
+- [ ] Symlinks auto-created in `.claude/skills/`
+
+### Phase 6: Create Implementation Plans
+
+**Goal**: Use `agents/plans/` for tracking work with embedded task checklists.
+
+- [ ] Review plans created by workspace-builder
+- [ ] Create new plans using `/skill plan-creator`
+- [ ] Each plan contains its own task checklist
+
+## Maintenance
+
+### Periodic Updates
+
+Run `npx workspace-agents` periodically to:
+- Sync new skills from the framework
+- Fix broken symlinks
+- Update directory structure
+
+### Documentation Freshness
+
+Invoke the documentation-agent when:
+- Adding new features
+- Changing architecture
+- Updating dependencies
+- Onboarding new team members
+
+```
+@documentation-agent Review and update our agent documentation
+```
+
+### Evolving Your Workspace
+
+As your project grows:
+1. **Add personas** for new domains of expertise
+2. **Create skills** for new repeatable tasks
+3. **Update references** when patterns change
+4. **Keep AGENTS.md current** with major changes
+
+## Summary Checklist
+
+### Essential (Do First)
+- [ ] Run `@workspace-builder enhance my workspace`
+- [ ] Review and refine AGENTS.md
+- [ ] Commit customized files
+
+### Recommended (Do Soon)
+- [ ] Create development-agent.md (if not auto-created)
+- [ ] Add 1-2 project-specific reference docs
+- [ ] Review improvement plans created by workspace-builder
+
+### Optional (Do As Needed)
+- [ ] Create domain-specific personas
+- [ ] Build custom skills for repetitive tasks
+- [ ] Set up complex feature plans
+
+## Resources
+
+- [workspace-builder.md](../personas/workspace-builder.md) - Comprehensive onboarding
+- [documentation-agent.md](../personas/documentation-agent.md) - Documentation maintenance
+- [skill-creator](../skills/skill-creator/SKILL.md) - Create new skills
+- [plan-creator](../skills/plan-creator/SKILL.md) - Create implementation plans
+- [persona-creator](../skills/persona-creator/SKILL.md) - Create new personas
+
+---
+
+*Generated by workspace-agents v0.0.2 on 2025-12-18*

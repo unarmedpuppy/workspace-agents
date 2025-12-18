@@ -42,7 +42,7 @@ This project is a documentation framework with **executable skills** for determi
     │   ├── tasks.md             # Active work tracking
     │   └── local/               # Ephemeral plans (gitignored)
     ├── personas/                # Reusable agent personalities
-    ├── skills/                  # Executable skills (was tools/)
+    ├── skills/                  # Executable skills (was skills/)
     │   ├── skill-creator/       # Create Anthropic-compliant skills
     │   ├── scaffold-workspace/   # Initialize framework
     │   └── upgrade-workspace/    # Migrate existing structure
@@ -142,8 +142,8 @@ Each skill contains:
 | `agents/reference/` | Topic-focused deep documentation |
 | `agents/plans/tasks.md` | Active work tracking (was agents/plans/tasks.md) |
 | `agents/plans/` | Shared implementation plans (committed) |
-| `agents/plans/local/` | Local scratch work (gitignored, was plans-local/) |
+| `agents/plans/local/` | Local scratch work (gitignored, was agents/plans/local/) |
 | `agents/legacy/` | Migrated legacy files |
 | `agents/personas/` | Reusable agent personalities |
 | `agents/personas/documentation-agent.md` | Maintains documentation standards |
-| `agents/skills/` | Skill-specific guides with YAML frontmatter (was tools/) |
+| `agents/skills/` | Skill-specific guides with YAML frontmatter (was skills/) |

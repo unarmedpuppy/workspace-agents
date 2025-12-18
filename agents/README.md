@@ -33,7 +33,7 @@ agents/
 │   ├── meta-agent.md            # Agent for creating new personas
 │   ├── documentation-agent.md   # Agent for maintaining doc standards
 │   └── framework-agent.md       # Framework documentation specialist
-└── skills/                  # Executable skills (was tools/)
+└── skills/                  # Executable skills (was skills/)
     ├── README.md                # Skills directory index
     ├── skill-creator/           # Create Anthropic-compliant skills
     ├── scaffold-workspace/       # Initialize framework in new projects
@@ -83,7 +83,7 @@ Reusable agent personalities with specialized expertise:
 - Format: YAML frontmatter + expertise areas + key files + quick reference
 
 ### skills/
-Executable skills with scripts and dependencies (was tools/):
+Executable skills with scripts and dependencies (was skills/):
 
 - Each skill gets a subdirectory: `skills/<name>/`
 - Required: `SKILL.md` with YAML frontmatter (Anthropic standard)

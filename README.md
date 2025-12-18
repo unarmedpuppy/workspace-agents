@@ -107,8 +107,8 @@ your-project/
 
 | Old Path | New Path | Reason |
 |----------|----------|--------|
-| `agents/tools/` | `agents/skills/` | Aligns with Anthropic Agent Skills terminology |
-| `plans-local/` | `agents/plans/local/` | Clearer hierarchy (ephemeral plans under plans/) |
+| `agents/skills/` | `agents/skills/` | Aligns with Anthropic Agent Skills terminology |
+| `agents/plans/local/` | `agents/plans/local/` | Clearer hierarchy (ephemeral plans under plans/) |
 | `agents/personas/meta-agent.md` | `agents/personas/workspace-builder.md` | More descriptive, action-oriented persona |
 
 ---
@@ -483,7 +483,7 @@ agents/plans/local/
 Keep a `.gitkeep` in `agents/plans/local/` so the directory exists:
 
 ```bash
-mkdir -p agents/plans-local
+mkdir -p agents/agents/plans/local
 touch agents/plans/local/.gitkeep
 echo "agents/plans/local/*" >> .gitignore
 echo "!agents/plans/local/.gitkeep" >> .gitignore
