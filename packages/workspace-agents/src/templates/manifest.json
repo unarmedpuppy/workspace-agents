@@ -114,6 +114,10 @@
     {
       "target": "../../agents/skills/persona-creator",
       "link": ".claude/skills/persona-creator"
+    },
+    {
+      "target": "../../agents/skills/reference-creator",
+      "link": ".claude/skills/reference-creator"
     }
   ],
   "gitignoreAppend": [
@@ -122,6 +126,7 @@
   "skillsToCopy": [
     "skill-creator",
     "plan-creator",
-    "persona-creator"
+    "persona-creator",
+    "reference-creator"
   ]
 }

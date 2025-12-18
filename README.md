@@ -42,6 +42,7 @@ This framework provides a **deterministic, executable approach** to setting up A
 - **skill-creator** skill - Create new Anthropic-compliant skills
 - **plan-creator** skill - Create implementation plans (feature, bug-fix, refactor)
 - **persona-creator** skill - Create domain-specific agent personas
+- **reference-creator** skill - Create focused reference documentation
 - **workspace-builder** persona - Comprehensive onboarding that customizes everything
 - Complete documentation structure with progressive disclosure
 - Task management and planning workflows
@@ -231,6 +232,7 @@ Agent-discoverable skill guides are in `agents/skills/`:
 | [skill-creator](agents/skills/skill-creator/) | Create, validate, and package Anthropic-compliant skills |
 | [plan-creator](agents/skills/plan-creator/) | Create consistent implementation plans |
 | [persona-creator](agents/skills/persona-creator/) | Create domain-specific agent personas |
+| [reference-creator](agents/skills/reference-creator/) | Create focused reference documentation |
 | [scaffold-workspace](agents/skills/scaffold-workspace/) | Initialize complete framework in new projects |
 | [upgrade-workspace](agents/skills/upgrade-workspace/) | Migrate existing frameworks to latest structure |
 
@@ -936,6 +938,7 @@ After `workspace-agents init`, use Claude Code's `/skill` command for ongoing ta
 /skill skill-creator     # Create new Anthropic-compliant skills
 /skill plan-creator      # Create implementation plans
 /skill persona-creator   # Create domain-specific personas
+/skill reference-creator # Create reference documentation
 ```
 
 ### Direct Script Usage (Development)

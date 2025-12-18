@@ -98,12 +98,19 @@ See `agents/plans/tasks.md` for available work. Protocol:
 
 Agent-discoverable skills are in `agents/skills/`:
 
-[Add your project-specific skills here]
+| Skill | Purpose |
+|-------|---------|
+| [skill-creator](agents/skills/skill-creator/) | Create new Anthropic-compliant skills |
+| [plan-creator](agents/skills/plan-creator/) | Create implementation plans |
+| [persona-creator](agents/skills/persona-creator/) | Create domain-specific personas |
+| [reference-creator](agents/skills/reference-creator/) | Create reference documentation |
 
 Each skill contains:
 - `SKILL.md` - Documentation with YAML frontmatter
 - `package.json` - Dependencies and scripts
 - `scripts/` - Executable implementations
+
+> **IMPORTANT**: When creating new skills, plans, personas, or reference docs, **always use the corresponding creator skill**. This ensures consistent formatting and structure across the framework. Run the skill via `/skill <name>` or `npm run create` in the skill directory.
 
 ## Deep-Dive Documentation
 

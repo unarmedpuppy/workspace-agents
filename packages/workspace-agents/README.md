@@ -176,6 +176,7 @@ Apply these changes? (y/N) y
 | **skill-creator** | Create, validate, and package Anthropic-compliant skills |
 | **plan-creator** | Create consistent implementation plans (feature, bug-fix, refactor) |
 | **persona-creator** | Create domain-specific agent personas |
+| **reference-creator** | Create focused reference documentation |
 
 ## Bundled Personas
 

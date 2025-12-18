@@ -1,0 +1,10 @@
+{
+  "name": "@agents/reference-creator",
+  "version": "1.0.0",
+  "description": "Create focused reference documentation for specific topics",
+  "scripts": {
+    "create": "node scripts/create.js",
+    "validate": "node scripts/validate.js"
+  },
+  "keywords": ["agents", "reference", "documentation", "creator"]
+}
