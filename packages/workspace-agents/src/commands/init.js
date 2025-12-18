@@ -52,7 +52,11 @@ async function init(options = {}) {
        !changes.symlinks?.length &&
        !changes.moves?.length &&
        !changes.modifications?.length &&
-       !changes.creates?.length)) {
+       !changes.creates?.length &&
+       !changes.newFiles?.length &&
+       !changes.skillsToCopy?.length &&
+       !changes.symlinkFixes?.length &&
+       !changes.legacy?.length)) {
     console.log(chalk.green('\nNothing to do - framework is up to date.'));
     return;
   }

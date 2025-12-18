@@ -115,9 +115,10 @@ function analyzeStructure(root) {
 
     // Check for missing template files (personas, plans, reference docs)
     // Only check files within agents/ directory to avoid overwriting user's root files
+    // Include subdirectory READMEs (plans/README.md, reference/README.md) but not agents/README.md
     const filesToCheck = manifest.files.filter(f =>
       f.dest.startsWith('agents/') &&
-      !f.dest.endsWith('README.md') // Don't flag README files as missing
+      f.dest !== 'agents/README.md' // Skip main agents README, but allow subdirectory READMEs
     );
 
     for (const file of filesToCheck) {
