@@ -243,6 +243,8 @@ function printSuccess(changes) {
     console.log(chalk.gray('   This will analyze your codebase and customize all documentation.\n'));
     console.log(chalk.gray('2. ') + chalk.white('Create skills') + chalk.gray(' - Use ') + chalk.cyan('/skill skill-creator'));
     console.log(chalk.gray('3. ') + chalk.white('Create plans') + chalk.gray(' - Use ') + chalk.cyan('/skill plan-creator'));
+    console.log(chalk.gray('\nOptional: ') + chalk.gray('Periodically run ') + chalk.cyan('npx workspace-agents') + chalk.gray(' to update skill'));
+    console.log(chalk.gray('          symlinks, refine directory structure, and sync with latest features.'));
   } else if (changes.type === 'upgrade') {
     console.log(chalk.green.bold('\n✓ Workspace Agents upgraded successfully!\n'));
     console.log(chalk.white('Changes applied. Review git diff for details.'));
