@@ -238,9 +238,11 @@ function printSuccess(changes) {
   if (changes.type === 'scaffold') {
     console.log(chalk.green.bold('\n✓ Workspace Agents scaffolded successfully!\n'));
     console.log(chalk.white('Next steps:'));
-    console.log(chalk.gray('1. Review ') + chalk.cyan('AGENTS.md') + chalk.gray(' and customize for your project'));
-    console.log(chalk.gray('2. Use ') + chalk.cyan('/skill skill-creator') + chalk.gray(' to create new skills'));
-    console.log(chalk.gray('3. Use ') + chalk.cyan('/skill plan-creator') + chalk.gray(' to create implementation plans'));
+    console.log(chalk.gray('1. ') + chalk.white('Customize your workspace') + chalk.gray(' - Start a new AI session and ask:'));
+    console.log(chalk.cyan('   @workspace-builder enhance my workspace'));
+    console.log(chalk.gray('   This will analyze your codebase and customize all documentation.\n'));
+    console.log(chalk.gray('2. ') + chalk.white('Create skills') + chalk.gray(' - Use ') + chalk.cyan('/skill skill-creator'));
+    console.log(chalk.gray('3. ') + chalk.white('Create plans') + chalk.gray(' - Use ') + chalk.cyan('/skill plan-creator'));
   } else if (changes.type === 'upgrade') {
     console.log(chalk.green.bold('\n✓ Workspace Agents upgraded successfully!\n'));
     console.log(chalk.white('Changes applied. Review git diff for details.'));
