@@ -38,6 +38,10 @@
       "dest": "agents/plans/tasks.md"
     },
     {
+      "template": "getting-started.md.template",
+      "dest": "agents/plans/getting-started.md"
+    },
+    {
       "template": "plan_act.md.template",
       "dest": "agents/reference/plan_act.md"
     },
