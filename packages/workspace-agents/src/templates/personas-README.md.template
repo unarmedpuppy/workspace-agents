@@ -15,18 +15,37 @@ This directory contains reusable agent personalities that provide contextual gui
 
 | Persona | Purpose |
 |---------|---------|
-| `documentation-agent.md` | Maintains documentation quality and standards |
-| `framework-agent.md` | Framework development and architecture patterns |
-| `meta-agent.md` | Meta-level project guidance and coordination |
+| [workspace-builder.md](workspace-builder.md) | **Run first!** Comprehensive onboarding that customizes the framework to your project |
+| [documentation-agent.md](documentation-agent.md) | Maintains documentation quality and standards compliance |
+| [framework-agent.md](framework-agent.md) | Workspace Agents framework specialist and best practices |
 
-## Creating Custom Personas
+## Getting Started
 
-1. Create a new `.md` file in this directory
-2. Add YAML frontmatter with name, description, and skills-used
-3. Document the persona's role, approach, and patterns
-4. Link to relevant skills and reference documentation
+After scaffolding, invoke the workspace-builder persona to customize everything:
 
-### Template
+```
+@workspace-builder Please analyze this codebase and customize the framework
+```
+
+This will:
+1. Analyze your codebase structure and tech stack
+2. Update AGENTS.md with real project information
+3. Create relevant reference documents
+4. Build a development-agent.md with full codebase expertise
+5. Populate tasks.md with discovered recommendations
+
+## Creating New Personas
+
+Use the `persona-creator` skill:
+
+```bash
+cd agents/skills/persona-creator
+npm run create
+```
+
+See [../skills/persona-creator/](../skills/persona-creator/) for full documentation.
+
+### Manual Template
 
 ```markdown
 ---

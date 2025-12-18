@@ -62,6 +62,18 @@
       "dest": "agents/personas/README.md"
     },
     {
+      "template": "documentation-agent.md.template",
+      "dest": "agents/personas/documentation-agent.md"
+    },
+    {
+      "template": "framework-agent.md.template",
+      "dest": "agents/personas/framework-agent.md"
+    },
+    {
+      "template": "workspace-builder.md.template",
+      "dest": "agents/personas/workspace-builder.md"
+    },
+    {
       "template": "skills-README.md.template",
       "dest": "agents/skills/README.md"
     },
@@ -98,6 +110,10 @@
     {
       "target": "../../agents/skills/upgrade-workspace",
       "link": ".claude/skills/upgrade-workspace"
+    },
+    {
+      "target": "../../agents/skills/persona-creator",
+      "link": ".claude/skills/persona-creator"
     }
   ],
   "gitignoreAppend": [
@@ -105,6 +121,7 @@
   ],
   "skillsToCopy": [
     "skill-creator",
-    "plan-creator"
+    "plan-creator",
+    "persona-creator"
   ]
 }
