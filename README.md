@@ -40,6 +40,9 @@ This framework provides a **deterministic, executable approach** to setting up A
 - **scaffold-workspace** skill - Initialize complete framework in new projects
 - **upgrade-workspace** skill - Migrate existing frameworks to new structure
 - **skill-creator** skill - Create new Anthropic-compliant skills
+- **plan-creator** skill - Create implementation plans (feature, bug-fix, refactor)
+- **persona-creator** skill - Create domain-specific agent personas
+- **workspace-builder** persona - Comprehensive onboarding that customizes everything
 - Complete documentation structure with progressive disclosure
 - Task management and planning workflows
 - Persona system for specialized agent behaviors
@@ -71,25 +74,29 @@ your-project/
     ├── reference/               # Deep documentation (split by topic)
     │   ├── typescript.md        # Language-specific standards
     │   ├── agent-patterns.md    # Agent development patterns
-    │   ├── skill-patterns.md    # Skill development patterns (was skill-patterns.md)
-    │   └── plan_act.md          # Workflow documentation
+    │   ├── documentation-style.md # Documentation standards
+    │   └── plan_act.md          # Plan → Act → Test workflow
     ├── plans/                   # Implementation plans and active work
-    │   ├── tasks.md             # Active task tracking (was agents/plans/tasks.md)
-    │   ├── local/               # Local scratch plans (gitignored, was plans-local/)
+    │   ├── tasks.md             # Active task tracking
+    │   ├── getting-started.md   # Workspace customization guide
+    │   ├── local/               # Local scratch plans (gitignored)
     │   └── <feature-name>.md    # Shared plans (committed)
     ├── personas/                # Reusable agent personalities
-    │   ├── meta-agent.md        # Agent for creating new personas
-    │   ├── documentation-agent.md  # Agent for maintaining documentation standards
-    │   └── <domain>-agent.md    # Domain specialists
-    ├── skills/                  # Executable skills (was tools/)
+    │   ├── workspace-builder.md # Run first! Customizes framework to your project
+    │   ├── documentation-agent.md  # Maintains documentation standards
+    │   ├── framework-agent.md   # Framework specialist
+    │   └── <domain>-agent.md    # Created via persona-creator skill
+    ├── skills/                  # Executable skills
     │   ├── README.md
     │   ├── skill-creator/       # Create new Anthropic-compliant skills
     │   │   ├── SKILL.md         # Skill documentation with YAML frontmatter
     │   │   ├── package.json     # Dependencies and scripts
     │   │   ├── scripts/         # Executable scripts
     │   │   └── references/      # Deep documentation
-    │   ├── scaffold-workspace/   # Initialize framework in new projects
-    │   └── upgrade-workspace/    # Migrate existing frameworks
+    │   ├── plan-creator/        # Create implementation plans
+    │   ├── persona-creator/     # Create domain-specific personas
+    │   ├── scaffold-workspace/  # Initialize framework in new projects
+    │   └── upgrade-workspace/   # Migrate existing frameworks
     └── legacy/                  # Migrated legacy files
         ├── .gitkeep
         ├── README.md            # Legacy directory explanation
@@ -100,10 +107,10 @@ your-project/
 
 | Old Path | New Path | Reason |
 |----------|----------|--------|
-| `agents/skills/` | `agents/skills/` | Aligns with Anthropic Agent Skills terminology |
-| `agents/plans/` | `agents/plans/` | Unified workflow (plans contain tasks) |
-| `agents/plans/local/` | `agents/plans/local/` | Clearer hierarchy (ephemeral plans under plans/) |
-| `agents/reference/skill-patterns.md` | `agents/reference/skill-patterns.md` | Consistent terminology |
+| `agents/tools/` | `agents/skills/` | Aligns with Anthropic Agent Skills terminology |
+| `agents/tasks.md` | `agents/plans/tasks.md` | Unified workflow (plans contain tasks) |
+| `plans-local/` | `agents/plans/local/` | Clearer hierarchy (ephemeral plans under plans/) |
+| `agents/personas/meta-agent.md` | `agents/personas/workspace-builder.md` | More descriptive, action-oriented persona |
 
 ---
 
@@ -222,9 +229,10 @@ Agent-discoverable skill guides are in `agents/skills/`:
 | Skill | Purpose |
 |-------|---------|
 | [skill-creator](agents/skills/skill-creator/) | Create, validate, and package Anthropic-compliant skills |
+| [plan-creator](agents/skills/plan-creator/) | Create consistent implementation plans |
+| [persona-creator](agents/skills/persona-creator/) | Create domain-specific agent personas |
 | [scaffold-workspace](agents/skills/scaffold-workspace/) | Initialize complete framework in new projects |
 | [upgrade-workspace](agents/skills/upgrade-workspace/) | Migrate existing frameworks to latest structure |
-| [plan-creator](agents/skills/plan-creator/) | Create consistent implementation plans |
 
 Each skill contains:
 - `SKILL.md` - Documentation with YAML frontmatter (Anthropic standard)
@@ -236,8 +244,9 @@ Each skill contains:
 
 | Document | Purpose |
 |----------|---------|
-| `agents/plans/tasks.md` | Active work tracking (was agents/tasks.md) |
-| `agents/reference/skill-patterns.md` | Skill development patterns |
+| `agents/plans/tasks.md` | Active work tracking |
+| `agents/plans/getting-started.md` | Workspace customization guide |
+| `agents/reference/plan_act.md` | Plan → Act → Test workflow |
 | `agents/skills/` | Skill-specific guides |
 ```
 
@@ -496,12 +505,14 @@ Plans separate collaborative documentation from local scratch work, preventing e
 
 ```
 agents/
-├── plans/                    # Committed - shared plans
-│   ├── auth-system.md
-│   └── api-redesign.md
-└── plans-local/              # Gitignored - local scratch
-    ├── session-2024-01-15.md
-    └── exploration-notes.md
+└── plans/                    # Implementation plans
+    ├── tasks.md              # Active work tracking
+    ├── getting-started.md    # Workspace customization guide
+    ├── auth-system.md        # Committed - shared plans
+    ├── api-redesign.md
+    └── local/                # Gitignored - local scratch
+        ├── session-2024-01-15.md
+        └── exploration-notes.md
 ```
 
 ### When to Use Each
@@ -602,10 +613,10 @@ Examples: `database-agent.md`, `auth-agent.md`, `api-agent.md`, `deploy-agent.md
 
 ```
 agents/personas/
-├── meta-agent.md           # Creates new personas
-├── code-style-agent.md     # TypeScript/coding standards expert
-├── test-agent.md           # Testing specialist
-└── [project]-agent.md      # Project-specific specialist
+├── workspace-builder.md    # Run first! Customizes framework to your project
+├── documentation-agent.md  # Documentation standards expert
+├── framework-agent.md      # Framework specialist
+└── [domain]-agent.md       # Created via persona-creator skill
 ```
 
 ### Persona File Format
@@ -640,51 +651,34 @@ You are the [domain] specialist. Your expertise includes:
 See [agents/](../) for complete documentation.
 ```
 
-### The Meta-Agent Persona
+### The Workspace Builder Persona
 
-Include a `meta-agent.md` persona that can create new personas. This enables agents to bootstrap specialized knowledge for new domains:
+The `workspace-builder.md` persona is designed to run first after scaffolding. It analyzes your codebase and customizes all framework documentation:
 
 ```markdown
 ---
-name: meta-agent
-description: Creates new agent personas for specialized domains
+name: workspace-builder
+description: Comprehensive workspace onboarding and customization
 ---
 
-You are the Meta-Agent, responsible for creating new agent personas.
+You are the Workspace Builder, responsible for customizing the Workspace Agents
+framework to match the specific needs of this project.
 
-## When to Create a Persona
+## What You Do
 
-- New domain expertise needed (e.g., database, auth, API)
-- Recurring questions about a specific area
-- Complex subsystem requiring specialized knowledge
-
-## Persona Creation Process
-
-1. **Identify the domain** - What specialized knowledge is needed?
-2. **Gather context** - Read relevant code, docs, and patterns
-3. **Define expertise areas** - List 3-5 key areas of knowledge
-4. **Document key files** - Which files does this persona need to know?
-5. **Add critical rules** - What patterns must be followed?
-6. **Create the file** - Use the standard persona format
-
-## Naming Convention
-
-**Always name new personas `[domain]-agent.md`**
-
-## Output Location
-
-Create personas in `agents/personas/[domain]-agent.md`
-
-## Template
-
-[Include the persona template here]
+1. Analyze the codebase structure, language, and frameworks
+2. Customize AGENTS.md with real project information
+3. Create relevant reference documents in agents/reference/
+4. Build a development-agent.md persona tailored to the project
+5. Populate tasks.md with actionable recommendations
+6. Update all documentation to reflect actual project patterns
 ```
 
 ### When to Use Personas
 
-- **Project-specific personas**: Deep knowledge of your codebase (e.g., `jumpstart-agent.md`)
-- **Domain personas**: Expertise in specific areas (e.g., `code-style-agent.md`, `test-agent.md`)
-- **Meta-agent**: Bootstrap new personas when gaps are identified
+- **Workspace Builder**: Run first to customize the framework for your project
+- **Domain personas**: Expertise in specific areas (e.g., `documentation-agent.md`, `framework-agent.md`)
+- **persona-creator skill**: Create new personas via `/skill persona-creator`
 
 ### Integration with Copilot Agents
 
@@ -829,8 +823,9 @@ Embed this workflow in your AGENTS.md or reference it from `agents/plan_act.md`.
 | `agents/reference/` | Deep documentation split by topic | Recommended |
 | `agents/reference/typescript.md` | Language-specific patterns | Recommended |
 | `agents/reference/agent-patterns.md` | Agent development patterns | As needed |
-| `agents/reference/skill-patterns.md` | Tool development patterns | As needed |
+| `agents/reference/plan_act.md` | Plan → Act → Test workflow | Recommended |
 | `agents/plans/tasks.md` | Active task tracking | Recommended |
+| `agents/plans/getting-started.md` | Workspace customization guide | Recommended |
 | `agents/plans/archive/` | Completed task phases | Recommended |
 | `agents/plans/templates/` | Task templates | Recommended |
 | `agents/plans/` | Shared implementation plans | Recommended |
@@ -839,9 +834,9 @@ Embed this workflow in your AGENTS.md or reference it from `agents/plan_act.md`.
 | `agents/legacy/README.md` | Legacy directory explanation and migration guide | If legacy exists |
 | `agents/legacy/MIGRATION.md` | Migration history and recommendations | If legacy exists |
 | `agents/personas/` | Reusable agent personalities | Recommended |
-| `agents/personas/meta-agent.md` | Creates new personas | Recommended |
+| `agents/personas/workspace-builder.md` | Customizes framework for your project | Recommended |
 | `agents/personas/documentation-agent.md` | Maintains documentation standards | Recommended |
-| `agents/personas/<domain>-agent.md` | Domain specialists | As needed |
+| `agents/personas/<domain>-agent.md` | Domain specialists (via persona-creator) | As needed |
 | `agents/skills/<name>/SKILL.md` | Tool documentation | As needed |
 | `agents/skills/<name>/package.json` | Tool dependencies | As needed |
 | `agents/skills/<name>/scripts/` | Tool implementation scripts | As needed |
@@ -940,6 +935,7 @@ After `workspace-agents init`, use Claude Code's `/skill` command for ongoing ta
 ```
 /skill skill-creator     # Create new Anthropic-compliant skills
 /skill plan-creator      # Create implementation plans
+/skill persona-creator   # Create domain-specific personas
 ```
 
 ### Direct Script Usage (Development)
@@ -1007,7 +1003,7 @@ This guide was validated against publicly documented best practices from major A
 | 3 | **Integrated Plan → Act → Test** | Combines planning with task tracking and commit strategy | End-to-end workflow guidance |
 | 4 | **Comprehensive vendor matrix** | Single reference for Claude, Copilot, Cursor, Gemini | Easy multi-tool adoption |
 | 5 | **Public/local plan separation** | `agents/plans/` (committed) vs `agents/plans/local/` (gitignored) | Prevents committing every agent thought |
-| 6 | **Agent personas with meta-agent** | Reusable personalities + bootstrapping agent | Self-extending persona system |
+| 6 | **Agent personas with workspace-builder** | Reusable personalities + customization agent | Self-customizing persona system |
 | 7 | **Split reference documentation** | `agents/reference/` with topic-focused files | Reduces context bloat, faster lookups |
 | 8 | **Task management structure** | `agents/plans/` with archive/ and templates/ | Scalable task tracking with history |
 | 9 | **Directory index** | `agents/README.md` explaining all subdirectories | Quick orientation for agents and humans |
@@ -1028,7 +1024,7 @@ Key differentiators:
 - **Progressive disclosure** - Three-layer documentation (AGENTS.md → agents/README.md → agents/reference/)
 - **Multi-agent safety** - Git-based task claiming prevents conflicts
 - **Context efficiency** - Split reference docs reduce token usage
-- **Self-extending** - Meta-agent creates new personas as needed
+- **Self-customizing** - Workspace-builder adapts framework to your project
 
 ### Sources
 
