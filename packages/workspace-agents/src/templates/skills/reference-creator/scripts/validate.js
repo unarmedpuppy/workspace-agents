@@ -129,7 +129,7 @@ const args = process.argv.slice(2);
 if (args.length === 0) {
   console.log('Usage: npm run validate <path/to/reference.md>');
   console.log('\nExample:');
-  console.log('  npm run validate ../../reference/typescript.md');
+  console.log('  npm run validate ../../reference/coding-style-guide.md');
   process.exit(1);
 }
 

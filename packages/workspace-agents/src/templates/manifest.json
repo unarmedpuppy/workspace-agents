@@ -58,8 +58,8 @@
       "dest": "agents/reference/agent-patterns.md"
     },
     {
-      "template": "typescript.md.template",
-      "dest": "agents/reference/typescript.md"
+      "template": "coding-style-guide.md.template",
+      "dest": "agents/reference/coding-style-guide.md"
     },
     {
       "template": "skill-patterns.md.template",

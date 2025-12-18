@@ -19,7 +19,7 @@ This directory contains topic-focused documentation that provides deep guidance 
 | [documentation-style.md](documentation-style.md) | Documentation and markdown standards |
 | [agent-patterns.md](agent-patterns.md) | Best practices for AI agent workflows |
 | [skill-patterns.md](skill-patterns.md) | Skill design and implementation patterns |
-| [typescript.md](typescript.md) | TypeScript patterns and configuration (if applicable) |
+| [coding-style-guide.md](coding-style-guide.md) | Project coding standards and conventions |
 
 ## Creating New Reference Docs
 
@@ -45,7 +45,7 @@ Create a new reference doc when:
 
 | Type | Purpose | Examples |
 |------|---------|----------|
-| **Language** | Language-specific patterns and idioms | `typescript.md`, `python.md` |
+| **Language** | Language-specific patterns and idioms | `python.md`, `go.md`, `rust.md` |
 | **Framework** | Framework-specific usage and patterns | `react.md`, `express.md` |
 | **Workflow** | Multi-step processes and workflows | `plan_act.md`, `code-review.md` |
 | **General** | Cross-cutting concerns | `documentation-style.md`, `security.md` |

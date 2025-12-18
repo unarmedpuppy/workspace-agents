@@ -71,8 +71,8 @@ Create a new reference doc when:
 **When to use**: Documenting language-specific patterns, idioms, and standards
 
 **Example topics**:
-- `typescript.md` - TypeScript patterns and configuration
 - `python.md` - Python idioms and project structure
+- `go.md` - Go patterns and conventions
 - `rust.md` - Rust ownership and error handling
 
 **Template sections**:
@@ -185,7 +185,7 @@ Continue with topic coverage.
 
 **Use kebab-case topic names**:
 
-- `typescript.md`
+- `coding-style-guide.md`
 - `api-design.md`
 - `code-review.md`
 - `error-handling.md`
