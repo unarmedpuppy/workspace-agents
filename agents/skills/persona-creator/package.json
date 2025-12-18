@@ -1,0 +1,23 @@
+{
+  "name": "persona-creator",
+  "version": "1.0.0",
+  "description": "Create agent personas for specialized domains",
+  "main": "scripts/create.js",
+  "scripts": {
+    "create": "node scripts/create.js",
+    "validate": "node scripts/validate.js"
+  },
+  "keywords": [
+    "persona",
+    "ai-agents",
+    "documentation"
+  ],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "chalk": "^4.1.2",
+    "fs-extra": "^11.2.0",
+    "inquirer": "^8.2.6",
+    "js-yaml": "^4.1.0"
+  }
+}
