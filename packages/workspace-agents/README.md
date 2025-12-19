@@ -2,6 +2,17 @@
 
 Initialize AI agent workflow framework in any project.
 
+## Why This Exists
+
+Local workspace agents (Claude Code, Copilot, Cursor, Gemini, etc.) each expect different entry point files: `CLAUDE.md`, `GEMINI.md`, `.github/copilot-instructions.md`, `.cursor/rules/`. Standards are constantly evolving.
+
+This tool consolidates these vendor-specific entry points while keeping everything in a single `agents/` directory that can be managed and updated as standards evolve. It provides:
+
+- **Unified entry point**: `AGENTS.md` as the canonical source, with vendor breadcrumbs pointing to it
+- **Symlinked skills**: Claude skills in `.claude/skills/` linking to `agents/skills/`
+- **Team consistency**: Shared starting point when engineers begin fresh context sessions with any local agent
+- **Future-proof structure**: Update the framework as vendor standards change
+
 ## Quick Start
 
 ```bash
