@@ -66,7 +66,7 @@ After scaffolding, your project contains:
 - [ ] Update Quick Start commands
 - [ ] Add project-specific Architecture Overview
 - [ ] Document your Code Style conventions
-- [ ] Define Boundaries (Always Do / Ask First / Never Do)
+- [ ] Define Boundaries (Allowed Operations / Forbidden / Anti-Goals)
 
 **Key principle**: AGENTS.md should be <300 lines. Move detailed docs to `agents/reference/`.
 

@@ -1,117 +1,83 @@
-# {{PROJECT_NAME}} - Agent Instructions
+# {{PROJECT_NAME}}
 
-**Read this file first.** This is your entry point for understanding and contributing to the project.
+[One-line mission: what this project does and what success looks like]
 
-## Project Summary
+## Allowed Operations
 
-{{PROJECT_NAME}} - [Add your project description here]
+- Edit code in `src/`
+- Run tests
+- Update documentation
+- [Add/remove as appropriate]
 
-**Tech Stack**: [Add your tech stack here]
+**Forbidden** (ask first):
+- Changing CI/CD configuration
+- Modifying database schemas
+- Updating dependencies
+- [Add project-specific restrictions]
 
-## Quick Commands
+## Setup
 
 ```bash
-git clone <repo-url>        # Clone the repository
-git pull origin main        # Get latest changes
-git checkout -b feature/x   # Create feature branch
-git add .                   # Stage changes
-git commit -m "msg"         # Commit changes
-git push origin <branch>    # Push to remote
+# Clone and install
+git clone <repo-url>
+cd {{PROJECT_NAME}}
+npm install          # or: pip install -r requirements.txt
+
+# Environment
+cp .env.example .env
+# Edit .env with required values
 ```
 
-## Architecture Overview
+## Run / Test
 
-[Describe your project architecture here]
+```bash
+# Fast tests (run frequently)
+npm test             # or: pytest tests/unit
 
-**Key Directories**:
-```
-/
-├── AGENTS.md                    # This file - universal entrypoint
-├── CLAUDE.md                    # Breadcrumb for Claude Code
-├── GEMINI.md                    # Breadcrumb for Gemini
-├── .cursor/rules/               # Breadcrumbs for Cursor
-├── .github/                     # Breadcrumbs and agents for Copilot
-└── agents/                      # Deep documentation
-    ├── README.md                # Directory index
-    ├── reference/               # Topic-focused documentation
-    ├── plans/                   # Implementation plans (with embedded tasks)
-    │   └── local/               # Ephemeral plans (gitignored)
-    ├── personas/                # Reusable agent personalities
-    └── skills/                  # Executable skills
+# Full test suite (before PR)
+npm run test:all     # or: pytest
+
+# Lint
+npm run lint         # or: ruff check .
+
+# Dev server
+npm run dev          # or: python manage.py runserver
 ```
 
-## Code Style
+## Repo Map
 
-[Add your code style guidelines here]
+```
+{{PROJECT_NAME}}/
+├── src/              # Application source code
+├── tests/            # Test files
+├── docs/             # Documentation
+├── scripts/          # Build and utility scripts
+└── agents/           # AI agent documentation (see agents/README.md)
+```
 
-See `agents/reference/documentation-style.md` for complete guidelines.
+## Definition of Done
 
-## Boundaries
+- [ ] All tests pass
+- [ ] Lint passes with no warnings
+- [ ] No TODO comments left in changed code
+- [ ] Documentation updated for any API changes
+- [ ] PR description explains the "why"
 
-### Always Do
-- Keep AGENTS.md concise; move deep docs to `agents/reference/`
-- Use YAML frontmatter for discoverable resources
-- Test documentation changes by reading as an AI agent would
-- Commit after each logical update
+## Anti-Goals
 
-### Ask First
-- Major architectural changes
-- New dependencies or frameworks
-- Breaking changes to APIs
-- Adding new top-level directories
+**Do not modify** (unless explicitly asked):
+- [Legacy code in `src/legacy/`]
+- [Database migration files]
+- [Generated files in `dist/`]
+- [Third-party integrations]
 
-### Never Do
-- Commit to main branch directly (use feature branches)
-- Delete documented patterns without archiving
-- Skip updating the README when adding new features
-- Commit ephemeral work from `agents/plans/local/`
-
-## Workflow
-
-### Plan → Act → Test
-
-1. **Plan**: Understand requirements, explore existing code, ask clarifying questions
-2. **Act**: Implement incrementally, commit often, follow patterns
-3. **Test**: Verify correctness, run tests, update docs
-
-### Planning Documentation
-
-Store plans in `agents/plans/` (shared) or `agents/plans/local/` (local only):
-
-- **`agents/plans/`** - Committed plans for multi-session work
-- **`agents/plans/local/`** - Gitignored scratch work, session notes
-
-See `agents/reference/plan_act.md` for plan templates and workflow details.
-
-## Skills Documentation
-
-Agent-discoverable skills are in `agents/skills/`:
-
-| Skill | Purpose |
-|-------|---------|
-| [skill-creator](agents/skills/skill-creator/) | Create new Anthropic-compliant skills |
-| [plan-creator](agents/skills/plan-creator/) | Create implementation plans |
-| [persona-creator](agents/skills/persona-creator/) | Create domain-specific personas |
-| [reference-creator](agents/skills/reference-creator/) | Create reference documentation |
-
-Each skill contains:
-- `SKILL.md` - Documentation with YAML frontmatter
-- `package.json` - Dependencies and scripts
-- `scripts/` - Executable implementations
-
-> **IMPORTANT**: When creating new skills, plans, personas, or reference docs, **always use the corresponding creator skill**. This ensures consistent formatting and structure across the framework. Run the skill via `/skill <name>` or `npm run create` in the skill directory.
-
-## Deep-Dive Documentation
-
-| Document | Purpose |
-|----------|---------|
-| `agents/README.md` | Directory index explaining all subdirectories |
-| `agents/reference/` | Topic-focused deep documentation |
-| `agents/plans/` | Shared implementation plans (committed) |
-| `agents/plans/local/` | Local scratch work (gitignored) |
-| `agents/personas/` | Reusable agent personalities |
-| `agents/skills/` | Executable skills with YAML frontmatter |
+**Do not refactor**:
+- Working code unrelated to the current task
+- Test utilities unless tests are failing
+- Build configuration
 
 ---
+
+*For AI workflow documentation, skills, and personas, see [agents/](agents/README.md).*
 
 *Generated by workspace-agents v{{FRAMEWORK_VERSION}} on {{CREATION_DATE}}*

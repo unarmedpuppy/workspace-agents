@@ -1,12 +1,23 @@
 # Agents Directory
 
-Deep documentation and workflows for AI-assisted development.
+AI workflow documentation, skills, and personas for {{PROJECT_NAME}}.
+
+## Quick Start
+
+**Creating content? Use the creator skills:**
+
+```bash
+/skill plan-creator       # Create implementation plans
+/skill skill-creator      # Create new skills
+/skill persona-creator    # Create domain personas
+/skill reference-creator  # Create reference docs
+```
 
 ## Directory Structure
 
 ```
 agents/
-├── README.md           # This file - directory index
+├── README.md           # This file
 ├── reference/          # Topic-focused documentation
 ├── plans/              # Implementation plans (with embedded tasks)
 │   └── local/          # Ephemeral plans (gitignored)
@@ -15,52 +26,69 @@ agents/
 └── legacy/             # Migration artifacts
 ```
 
-## Reference Documentation
+## Workflow: Plan → Act → Test
 
-Topic-focused guides for specific patterns and practices:
+1. **Plan**: Create a plan using `/skill plan-creator`
+2. **Act**: Implement incrementally, commit often
+3. **Test**: Verify correctness, run tests, update docs
 
-| Document | Purpose |
-|----------|---------|
-| `agent-patterns.md` | Best practices for AI agent workflows |
-| `documentation-style.md` | Markdown and documentation standards |
-| `plan_act.md` | Plan → Act → Test workflow guide |
-| `skill-patterns.md` | Skill design and implementation patterns |
-| `coding-style-guide.md` | Project coding standards and conventions |
-
-## Plans
-
-Implementation plans with embedded task checklists. Use `/skill plan-creator` to create new plans.
-
-### Committed Plans (`plans/`)
-
-Multi-session implementation plans that are shared across the team. Each plan contains its own task checklist.
-
-### Local Plans (`plans/local/`)
-
-Gitignored scratch work for exploratory analysis and session notes.
-
-## Personas
-
-Reusable agent personalities that provide contextual guidance:
-
-- `documentation-agent.md` - Maintains documentation quality
-- `framework-agent.md` - Framework development patterns
-- `meta-agent.md` - Meta-level project guidance
-
-Create project-specific personas as needed.
+See [reference/plan_act.md](reference/plan_act.md) for details.
 
 ## Skills
 
-Executable, deterministic skills following Anthropic standards:
+Executable actions following Anthropic standards:
 
-- Each skill has `SKILL.md` with YAML frontmatter
-- `scripts/` contains implementation
-- `references/` has detailed documentation
-- See `.claude/skills/` for Claude Code integration
+| Skill | Purpose |
+|-------|---------|
+| [skill-creator](skills/skill-creator/) | Create new Anthropic-compliant skills |
+| [plan-creator](skills/plan-creator/) | Create implementation plans |
+| [persona-creator](skills/persona-creator/) | Create domain-specific personas |
+| [reference-creator](skills/reference-creator/) | Create reference documentation |
 
-## Legacy
+Each skill contains:
+- `SKILL.md` - Documentation with YAML frontmatter
+- `scripts/` - Executable implementations
+- `package.json` - Dependencies
 
-Archive for deprecated patterns and migration artifacts.
+**Claude Code integration**: Skills are symlinked in `.claude/skills/` for auto-detection.
+
+## Personas
+
+Reusable agent personalities for domain expertise:
+
+| Persona | Purpose |
+|---------|---------|
+| [workspace-builder](personas/workspace-builder.md) | Customizes framework for your project |
+| [documentation-agent](personas/documentation-agent.md) | Maintains documentation quality |
+| [framework-agent](personas/framework-agent.md) | Framework development patterns |
+
+## Reference Documentation
+
+| Document | Purpose |
+|----------|---------|
+| [plan_act.md](reference/plan_act.md) | Plan → Act → Test workflow |
+| [documentation-style.md](reference/documentation-style.md) | Documentation standards |
+| [agent-patterns.md](reference/agent-patterns.md) | AI agent best practices |
+| [skill-patterns.md](reference/skill-patterns.md) | Skill design patterns |
+| [coding-style-guide.md](reference/coding-style-guide.md) | Project coding standards |
+
+## Plans
+
+Implementation plans with embedded task checklists:
+
+- **`plans/`** - Committed plans for multi-session work
+- **`plans/local/`** - Gitignored scratch work (not committed)
+
+## Vendor Breadcrumbs
+
+These files point AI agents to AGENTS.md:
+
+| File | Vendor |
+|------|--------|
+| `CLAUDE.md` | Claude Code |
+| `GEMINI.md` | Gemini |
+| `.cursor/rules/project.mdc` | Cursor |
+| `.github/copilot-instructions.md` | GitHub Copilot |
 
 ---
 

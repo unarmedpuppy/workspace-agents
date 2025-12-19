@@ -21,7 +21,7 @@ Structure documentation from general to specific:
 
 - Clear headings and structure
 - Concrete examples
-- Explicit boundaries (Always Do, Ask First, Never Do)
+- Explicit boundaries (Allowed Operations, Forbidden, Anti-Goals)
 - Actionable instructions in imperative form
 
 ## Workflow Patterns
