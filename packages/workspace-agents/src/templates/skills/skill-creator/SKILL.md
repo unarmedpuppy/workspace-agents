@@ -118,11 +118,11 @@ npm run init
 ### Validate existing skill
 
 ```bash
-npm run validate ../plan-creator
+npm run validate ../my-skill
 
 ✓ SKILL.md exists
 ✓ Frontmatter valid
-✓ Name valid: plan-creator
+✓ Name valid: my-skill
 ✓ Description complete
 ✓ No auxiliary files
 ✓ Structure valid
@@ -133,11 +133,11 @@ Skill is valid!
 ### Package for distribution
 
 ```bash
-npm run package ../plan-creator
+npm run package ../my-skill
 
 ✓ Validation passed
 ✓ Creating .skill file...
-✓ Packaged: dist/plan-creator.skill (42.3 KB)
+✓ Packaged: dist/my-skill.skill (42.3 KB)
 ```
 
 ## Troubleshooting

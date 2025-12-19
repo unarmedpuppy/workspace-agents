@@ -42,7 +42,7 @@ description: Complete description including when to use this skill
   - Format: hyphen-case (lowercase letters and hyphens only)
   - Max length: 64 characters
   - Must match directory name
-  - Examples: `scaffold-workspace`, `skill-creator`, `deploy-aws`
+  - Examples: `skill-creator`, `deploy-aws`, `data-pipeline`
   
 - `description` (string): Complete skill description
   - Must include WHEN to use the skill (triggers, contexts)
@@ -179,7 +179,7 @@ For advanced scenarios (rollbacks, partial migrations, production safeguards), s
 
 **Examples**:
 - ✓ `skill-creator`
-- ✓ `scaffold-workspace`
+- ✓ `data-pipeline`
 - ✓ `deploy-aws-lambda`
 - ✗ `skillCreator` (camelCase)
 - ✗ `skill_creator` (snake_case)
