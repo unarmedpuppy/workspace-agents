@@ -1,11 +1,5 @@
----
-description: Project-wide coding rules
-globs:
-  - "**/*"
----
+# Cursor Rules
 
-# Project Instructions
+**See [AGENTS.md](../../AGENTS.md)** for complete project documentation.
 
-See [AGENTS.md](../../AGENTS.md) for complete project documentation.
-
-Follow all instructions in AGENTS.md strictly.
+This file is a breadcrumb for Cursor. All agent instructions are in AGENTS.md at the project root.

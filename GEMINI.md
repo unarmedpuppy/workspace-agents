@@ -1,5 +1,5 @@
-# Project Instructions
+# Gemini Instructions
 
-See [AGENTS.md](AGENTS.md) for complete project documentation.
+**See [AGENTS.md](./AGENTS.md)** for complete project documentation.
 
-Follow all instructions in AGENTS.md strictly.
+This file is a breadcrumb for Google Gemini. All agent instructions are in AGENTS.md.

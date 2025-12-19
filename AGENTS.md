@@ -1,118 +1,94 @@
-# Workspace Agents - Agent Instructions
+# workflow-agents
 
-**Read this file first.** This is your entry point for understanding and contributing to the project.
+[One-line mission: what this project does and what success looks like]
 
-## Project Summary
+## Allowed Operations
 
-A framework for scaffolding structured context for workspace AI workflows. This is a meta-project that documents best practices for organizing AI assistant documentation across vendors (Claude, Copilot, Cursor, Gemini).
+- Edit code in `src/`
+- Run tests
+- Update documentation
+- [Add/remove as appropriate]
 
-**Tech Stack**: Node.js CLI, Markdown documentation, Vendor-agnostic patterns
+**Forbidden** (ask first):
+- Changing CI/CD configuration
+- Modifying database schemas
+- Updating dependencies
+- [Add project-specific restrictions]
 
-## Quick Start
+## Setup
 
 ```bash
-npx workspace-agents init      # Initialize framework in your project
+# Clone and install
+git clone <repo-url>
+cd workflow-agents
+npm install          # or: pip install -r requirements.txt
+
+# Environment
+cp .env.example .env
+# Edit .env with required values
 ```
 
-Or for development of this repo:
+## Run / Test
 
 ```bash
-git clone <repo-url>        # Clone the repository
-git pull origin main        # Get latest changes
-git checkout -b feature/x   # Create feature branch
+# Fast tests (run frequently)
+npm test             # or: pytest tests/unit
+
+# Full test suite (before PR)
+npm run test:all     # or: pytest
+
+# Lint
+npm run lint         # or: ruff check .
+
+# Dev server
+npm run dev          # or: python manage.py runserver
 ```
 
-## Architecture Overview
+## Repo Map
 
-This project is a documentation framework with **one bundled skill** for deterministic setup. The structure follows a progressive disclosure pattern:
-
-**Key Directories**:
 ```
-/
-├── AGENTS.md                    # This file - universal entrypoint
-├── CLAUDE.md                    # Breadcrumb for Claude Code
-├── GEMINI.md                    # Breadcrumb for Gemini
-├── .cursor/rules/               # Breadcrumbs for Cursor
-├── .github/                     # Breadcrumbs and agents for Copilot
-├── .claude/skills/              # Symlinks to agents/skills/* (Claude Skills)
-├── packages/workspace-agents/   # npm package source
-│   ├── src/lib/                 # Core logic (scaffold, upgrade, init)
-│   └── src/templates/           # Templates and bundled skills
-└── agents/                      # This repo's own agent documentation
-    ├── README.md                # Directory index
-    ├── reference/               # Project-specific documentation
-    ├── plans/                   # Implementation plans
-    │   └── local/               # Ephemeral plans (gitignored)
-    ├── personas/                # Agent personalities (user-created)
-    └── skills/                  # Executable skills
-        └── skill-creator/       # Create Anthropic-compliant skills
+workflow-agents/
+├── src/              # Application source code
+├── tests/            # Test files
+├── docs/             # Documentation
+├── scripts/          # Build and utility scripts
+└── agents/           # AI workflow documentation
+    ├── reference/    # Deep-dive docs (load as needed)
+    ├── plans/        # Implementation plans (commit these)
+    │   └── local/    # Scratch work (gitignored)
+    ├── skills/       # Executable skills
+    └── personas/     # Agent personalities
 ```
 
-**Philosophy**: Lean by design
-- **Structure over content**: Provides directories and templates, users add project-specific content
-- **One bundled skill**: `skill-creator` helps users build Anthropic-compliant skills
-- **No meta-documentation**: No framework docs that don't describe the user's project
+**Using agents/**:
+- **plans/**: Create plans here for multi-step work. Commit when sharing across sessions.
+- **plans/local/**: Ephemeral scratch work. Never committed. Use for exploration.
+- **reference/**: Topic documentation. Load only when relevant to current task.
+- **skills/**: Use `/skill <name>` to invoke. See [agents/README.md](agents/README.md) for list.
 
-## Code Style
+## Definition of Done
 
-- Use clear, concise language optimized for AI agent comprehension
-- Keep AGENTS.md under 300 lines; move details to `agents/reference/`
-- Follow markdown best practices (ATX headers, fenced code blocks)
-- Include concrete examples in all documentation
+- [ ] All tests pass
+- [ ] Lint passes with no warnings
+- [ ] No TODO comments left in changed code
+- [ ] Documentation updated for any API changes
+- [ ] PR description explains the "why"
 
-## Boundaries
+## Anti-Goals
 
-### Always Do
-- Keep AGENTS.md concise; move deep docs to `agents/reference/`
-- Test documentation changes by reading as an AI agent would
-- Commit after each logical update
+**Do not modify** (unless explicitly asked):
+- [Legacy code in `src/legacy/`]
+- [Database migration files]
+- [Generated files in `dist/`]
+- [Third-party integrations]
 
-### Ask First
-- Major structural changes to the framework
-- New vendor-specific patterns not yet validated
-- Adding new top-level directories
+**Do not refactor**:
+- Working code unrelated to the current task
+- Test utilities unless tests are failing
+- Build configuration
 
-### Never Do
-- Commit to main branch directly (use feature branches)
-- Delete documented patterns without discussion
-- Make vendor-specific assumptions in AGENTS.md
-- Commit local scratch work from `agents/plans/local/`
+---
 
-## Workflow
+*For AI workflow documentation, skills, and personas, see [agents/](agents/README.md).*
 
-### Plan → Act → Test
-
-1. **Plan**: Understand requirements, explore existing docs, ask clarifying questions
-2. **Act**: Update documentation incrementally, commit often
-3. **Test**: Verify all links work, check formatting, ensure agent-readable
-
-### Planning Documentation
-
-Store plans in `agents/plans/` (shared) or `agents/plans/local/` (local only):
-
-- **`agents/plans/`** - Committed plans for framework enhancements, multi-session work
-- **`agents/plans/local/`** - Gitignored scratch work, session notes, exploratory analysis
-
-## Skill Documentation
-
-Agent-discoverable skill guides are in `agents/skills/`:
-
-| Skill | Purpose |
-|-------|---------|
-| [skill-creator](agents/skills/skill-creator/) | Create, validate, and package Anthropic-compliant skills |
-
-Each skill contains:
-- `SKILL.md` - Documentation with YAML frontmatter (Anthropic standard)
-- `package.json` - Dependencies and scripts
-- `scripts/` - Executable implementations
-
-## Deep-Dive Documentation
-
-| Directory | Purpose |
-|-----------|---------|
-| `agents/README.md` | Directory index explaining all subdirectories |
-| `agents/reference/` | Project-specific documentation (add as needed) |
-| `agents/plans/` | Shared implementation plans (committed) |
-| `agents/plans/local/` | Local scratch work (gitignored) |
-| `agents/personas/` | Agent personalities (add as needed) |
-| `agents/skills/` | Skill-specific guides with YAML frontmatter |
+*Generated by workspace-agents v0.0.2 on 2025-12-19*
