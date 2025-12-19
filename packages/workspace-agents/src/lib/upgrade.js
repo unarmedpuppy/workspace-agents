@@ -47,7 +47,8 @@ async function plan(projectRoot, options = {}) {
     newFiles: [],  // New template files that don't exist yet
     symlinks: [],
     legacy: [],
-    skillsToCopy: [],
+    skillsToCopy: [],      // New skills to add
+    skillsToUpdate: [],    // Existing bundled skills to update
     symlinkFixes: []
   };
 
@@ -152,15 +153,21 @@ async function plan(projectRoot, options = {}) {
     }
   }
 
-  // Plan skill sync - copy new bundled skills
+  // Plan skill sync - copy new bundled skills and update existing ones
   const bundledSkillsDir = getBundledSkillsDir();
   if (manifest.skillsToCopy?.length && fs.existsSync(bundledSkillsDir)) {
     for (const skillName of manifest.skillsToCopy) {
       const projectSkillPath = path.join(projectRoot, 'agents', 'skills', skillName);
       const bundledSkillPath = path.join(bundledSkillsDir, skillName);
 
-      if (fs.existsSync(bundledSkillPath) && !fs.existsSync(projectSkillPath)) {
-        changes.skillsToCopy.push(skillName);
+      if (fs.existsSync(bundledSkillPath)) {
+        if (!fs.existsSync(projectSkillPath)) {
+          // Skill doesn't exist - copy it
+          changes.skillsToCopy.push(skillName);
+        } else {
+          // Skill exists - update it (bundled skills should always be current)
+          changes.skillsToUpdate.push(skillName);
+        }
       }
     }
   }
@@ -307,6 +314,23 @@ async function apply(changes, projectRoot) {
       const destSkill = path.join(destSkillsDir, skillName);
 
       if (fs.existsSync(srcSkill)) {
+        fileOps.copyDir(srcSkill, destSkill);
+      }
+    }
+  }
+
+  // Update existing bundled skills (overwrite with latest)
+  if (changes.skillsToUpdate?.length) {
+    const bundledSkillsDir = getBundledSkillsDir();
+    const destSkillsDir = path.join(projectRoot, 'agents', 'skills');
+
+    for (const skillName of changes.skillsToUpdate) {
+      const srcSkill = path.join(bundledSkillsDir, skillName);
+      const destSkill = path.join(destSkillsDir, skillName);
+
+      if (fs.existsSync(srcSkill)) {
+        // Remove existing skill directory and replace with bundled version
+        fs.removeSync(destSkill);
         fileOps.copyDir(srcSkill, destSkill);
       }
     }

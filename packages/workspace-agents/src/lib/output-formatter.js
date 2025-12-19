@@ -86,6 +86,15 @@ function formatSkillCopy(skillName) {
 }
 
 /**
+ * Format a skill update message
+ * @param {string} skillName - Name of skill being updated
+ * @returns {string}
+ */
+function formatSkillUpdate(skillName) {
+  return `${chalk.yellow('UPDATE SKILL')} agents/skills/${skillName}`;
+}
+
+/**
  * Format a symlink fix message
  * @param {string} link - Link path
  * @param {string} target - Target path
@@ -164,6 +173,11 @@ function printChanges(changes) {
       console.log();
     }
 
+    if (changes.skillsToUpdate?.length) {
+      changes.skillsToUpdate.forEach(s => console.log(formatSkillUpdate(s)));
+      console.log();
+    }
+
     if (changes.newFiles?.length) {
       changes.newFiles.forEach(f => console.log(formatFileCreate(f.path)));
       console.log();
@@ -216,7 +230,10 @@ function formatSummary(changes) {
     parts.push(`${changes.creates.length} creates`);
   }
   if (changes.skillsToCopy?.length) {
-    parts.push(`${changes.skillsToCopy.length} skills`);
+    parts.push(`${changes.skillsToCopy.length} new skills`);
+  }
+  if (changes.skillsToUpdate?.length) {
+    parts.push(`${changes.skillsToUpdate.length} skill updates`);
   }
   if (changes.newFiles?.length) {
     parts.push(`${changes.newFiles.length} new files`);
@@ -267,6 +284,7 @@ module.exports = {
   formatSymlink,
   formatSymlinkFix,
   formatSkillCopy,
+  formatSkillUpdate,
   formatLegacy,
   formatGitignoreAppend,
   formatSkip,

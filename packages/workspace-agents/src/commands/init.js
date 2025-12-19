@@ -55,6 +55,7 @@ async function init(options = {}) {
        !changes.creates?.length &&
        !changes.newFiles?.length &&
        !changes.skillsToCopy?.length &&
+       !changes.skillsToUpdate?.length &&
        !changes.symlinkFixes?.length &&
        !changes.legacy?.length)) {
     console.log(chalk.green('\nNothing to do - framework is up to date.'));
