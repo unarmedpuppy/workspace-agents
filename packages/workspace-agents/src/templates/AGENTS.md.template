@@ -52,8 +52,19 @@ npm run dev          # or: python manage.py runserver
 ├── tests/            # Test files
 ├── docs/             # Documentation
 ├── scripts/          # Build and utility scripts
-└── agents/           # AI agent documentation (see agents/README.md)
+└── agents/           # AI workflow documentation
+    ├── reference/    # Deep-dive docs (load as needed)
+    ├── plans/        # Implementation plans (commit these)
+    │   └── local/    # Scratch work (gitignored)
+    ├── skills/       # Executable skills
+    └── personas/     # Agent personalities
 ```
+
+**Using agents/**:
+- **plans/**: Create plans here for multi-step work. Commit when sharing across sessions.
+- **plans/local/**: Ephemeral scratch work. Never committed. Use for exploration.
+- **reference/**: Topic documentation. Load only when relevant to current task.
+- **skills/**: Use `/skill <name>` to invoke. See [agents/README.md](agents/README.md) for list.
 
 ## Definition of Done
 
