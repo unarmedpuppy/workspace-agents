@@ -262,14 +262,10 @@ function formatSummary(changes) {
 function printSuccess(changes) {
   if (changes.type === 'scaffold') {
     console.log(chalk.green.bold('\n✓ Workspace Agents scaffolded successfully!\n'));
-    console.log(chalk.white('Next steps:'));
-    console.log(chalk.gray('1. ') + chalk.white('Customize AGENTS.md') + chalk.gray(' - Edit with your project\'s:'));
-    console.log(chalk.gray('   - Tech stack and architecture'));
-    console.log(chalk.gray('   - Code style and patterns'));
-    console.log(chalk.gray('   - Key directories and files\n'));
-    console.log(chalk.gray('2. ') + chalk.white('Create skills') + chalk.gray(' - Use ') + chalk.cyan('/skill skill-creator'));
-    console.log(chalk.gray('3. ') + chalk.white('Add documentation') + chalk.gray(' - Create files in ') + chalk.cyan('agents/reference/') + chalk.gray(' as needed'));
-    console.log(chalk.gray('\nOptional: ') + chalk.gray('Periodically run ') + chalk.cyan('npx workspace-agents') + chalk.gray(' to update bundled skills.'));
+    console.log(chalk.white('Next step:'));
+    console.log(chalk.gray('  Open ') + chalk.cyan('agents/plans/getting-started.md') + chalk.gray(' and work through the plan.'));
+    console.log(chalk.gray('  This will customize AGENTS.md and set up your workspace.\n'));
+    console.log(chalk.gray('Optional: ') + chalk.gray('Run ') + chalk.cyan('npx workspace-agents') + chalk.gray(' periodically to update bundled skills.'));
   } else if (changes.type === 'upgrade') {
     console.log(chalk.green.bold('\n✓ Workspace Agents upgraded successfully!\n'));
     console.log(chalk.white('Changes applied. Review git diff for details.'));
