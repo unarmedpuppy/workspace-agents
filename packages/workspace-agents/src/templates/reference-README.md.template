@@ -15,7 +15,7 @@ This directory contains topic-focused documentation that provides deep guidance 
 
 | Reference | Purpose |
 |-----------|---------|
-| [plan_act.md](plan_act.md) | Plan → Act → Test workflow guide |
+| [plan-act.md](plan-act.md) | Plan → Act → Test workflow guide |
 | [documentation-style.md](documentation-style.md) | Documentation and markdown standards |
 | [agent-patterns.md](agent-patterns.md) | Best practices for AI agent workflows |
 | [skill-patterns.md](skill-patterns.md) | Skill design and implementation patterns |
@@ -47,7 +47,7 @@ Create a new reference doc when:
 |------|---------|----------|
 | **Language** | Language-specific patterns and idioms | `python.md`, `go.md`, `rust.md` |
 | **Framework** | Framework-specific usage and patterns | `react.md`, `express.md` |
-| **Workflow** | Multi-step processes and workflows | `plan_act.md`, `code-review.md` |
+| **Workflow** | Multi-step processes and workflows | `plan-act.md`, `code-review.md` |
 | **General** | Cross-cutting concerns | `documentation-style.md`, `security.md` |
 
 ### Manual Template

@@ -28,7 +28,7 @@ Structure documentation from general to specific:
 
 ### Plan → Act → Test
 
-See `agents/reference/plan_act.md` for complete workflow.
+See `agents/reference/plan-act.md` for complete workflow.
 
 **Planning**: Create implementation plan before coding
 **Acting**: Implement incrementally with frequent commits

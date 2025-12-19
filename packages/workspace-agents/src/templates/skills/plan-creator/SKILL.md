@@ -9,7 +9,7 @@ Create consistent implementation plans that guide AI agents through complex work
 
 ## Overview
 
-This skill provides tools to create well-structured plans following the Plan → Act → Test workflow documented in `agents/reference/plan_act.md`.
+This skill provides tools to create well-structured plans following the Plan → Act → Test workflow documented in `agents/reference/plan-act.md`.
 
 **Core capabilities**:
 1. **create** - Generate new plan from template
@@ -462,5 +462,5 @@ progress: 6/14 tasks complete
 
 ## Related Documentation
 
-- `agents/reference/plan_act.md` - Complete Plan → Act → Test workflow
+- `agents/reference/plan-act.md` - Complete Plan → Act → Test workflow
 - `agents/reference/documentation-style.md` - Markdown formatting

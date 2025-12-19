@@ -40,7 +40,7 @@ your-project/
 └── agents/
     ├── README.md                # Directory index
     ├── reference/               # Deep documentation
-    │   ├── plan_act.md          # Plan → Act → Test workflow
+    │   ├── plan-act.md          # Plan → Act → Test workflow
     │   ├── documentation-style.md
     │   └── ...
     ├── plans/                   # Implementation plans

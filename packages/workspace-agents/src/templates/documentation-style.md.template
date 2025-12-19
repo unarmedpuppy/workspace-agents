@@ -54,7 +54,7 @@ const example = "like this";
 **Internal**: Relative paths
 
 ```markdown
-[See reference](../reference/plan_act.md)
+[See reference](../reference/plan-act.md)
 ```
 
 **External**: Full URLs

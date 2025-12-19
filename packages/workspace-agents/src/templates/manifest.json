@@ -46,8 +46,8 @@
       "dest": "agents/reference/README.md"
     },
     {
-      "template": "plan_act.md.template",
-      "dest": "agents/reference/plan_act.md"
+      "template": "plan-act.md.template",
+      "dest": "agents/reference/plan-act.md"
     },
     {
       "template": "documentation-style.md.template",

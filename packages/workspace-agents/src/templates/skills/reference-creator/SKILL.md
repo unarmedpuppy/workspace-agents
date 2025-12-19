@@ -104,7 +104,7 @@ Create a new reference doc when:
 **When to use**: Documenting multi-step processes and workflows
 
 **Example topics**:
-- `plan_act.md` - Plan → Act → Test workflow
+- `plan-act.md` - Plan → Act → Test workflow
 - `code-review.md` - Code review process
 - `deployment.md` - Deployment workflow
 

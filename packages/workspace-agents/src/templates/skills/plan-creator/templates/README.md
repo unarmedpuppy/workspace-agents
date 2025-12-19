@@ -70,5 +70,5 @@ Templates are starting points. Customize based on:
 
 ## Related Documentation
 
-- `agents/reference/plan_act.md` - Plan → Act → Test workflow
+- `agents/reference/plan-act.md` - Plan → Act → Test workflow
 - `agents/skills/plan-creator/SKILL.md` - Plan creator documentation

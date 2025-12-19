@@ -32,7 +32,7 @@ agents/
 2. **Act**: Implement incrementally, commit often
 3. **Test**: Verify correctness, run tests, update docs
 
-See [reference/plan_act.md](reference/plan_act.md) for details.
+See [reference/plan-act.md](reference/plan-act.md) for details.
 
 ## Skills
 
@@ -66,7 +66,7 @@ Reusable agent personalities for domain expertise:
 
 | Document | Purpose |
 |----------|---------|
-| [plan_act.md](reference/plan_act.md) | Plan → Act → Test workflow |
+| [plan-act.md](reference/plan-act.md) | Plan → Act → Test workflow |
 | [documentation-style.md](reference/documentation-style.md) | Documentation standards |
 | [agent-patterns.md](reference/agent-patterns.md) | AI agent best practices |
 | [skill-patterns.md](reference/skill-patterns.md) | Skill design patterns |

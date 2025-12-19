@@ -241,7 +241,7 @@ npm run export ../../plans/add-user-authentication.md
 ## Related Documentation
 
 - [SKILL.md](./SKILL.md) - Complete skill documentation
-- [agents/reference/plan_act.md](../../reference/plan_act.md) - Plan → Act → Test workflow
+- [agents/reference/plan-act.md](../../reference/plan-act.md) - Plan → Act → Test workflow
 - [templates/](./templates/) - Plan templates and examples
 
 ## Quick Command Reference
