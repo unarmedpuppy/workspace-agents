@@ -6,7 +6,6 @@
     "agents/plans/local",
     "agents/personas",
     "agents/skills",
-    "agents/legacy",
     ".claude/skills",
     ".cursor/rules",
     ".github"
@@ -38,56 +37,16 @@
       "dest": "agents/plans/README.md"
     },
     {
-      "template": "getting-started.md.template",
-      "dest": "agents/plans/getting-started.md"
-    },
-    {
       "template": "reference-README.md.template",
       "dest": "agents/reference/README.md"
-    },
-    {
-      "template": "plan-act.md.template",
-      "dest": "agents/reference/plan-act.md"
-    },
-    {
-      "template": "documentation-style.md.template",
-      "dest": "agents/reference/documentation-style.md"
-    },
-    {
-      "template": "agent-patterns.md.template",
-      "dest": "agents/reference/agent-patterns.md"
-    },
-    {
-      "template": "coding-style-guide.md.template",
-      "dest": "agents/reference/coding-style-guide.md"
-    },
-    {
-      "template": "skill-patterns.md.template",
-      "dest": "agents/reference/skill-patterns.md"
     },
     {
       "template": "personas-README.md.template",
       "dest": "agents/personas/README.md"
     },
     {
-      "template": "documentation-agent.md.template",
-      "dest": "agents/personas/documentation-agent.md"
-    },
-    {
-      "template": "framework-agent.md.template",
-      "dest": "agents/personas/framework-agent.md"
-    },
-    {
-      "template": "workspace-builder.md.template",
-      "dest": "agents/personas/workspace-builder.md"
-    },
-    {
       "template": "skills-README.md.template",
       "dest": "agents/skills/README.md"
-    },
-    {
-      "template": "legacy-README.md.template",
-      "dest": "agents/legacy/README.md"
     },
     {
       "template": "claude-skills-README.md.template",
@@ -106,27 +65,12 @@
     {
       "target": "../../agents/skills/skill-creator",
       "link": ".claude/skills/skill-creator"
-    },
-    {
-      "target": "../../agents/skills/plan-creator",
-      "link": ".claude/skills/plan-creator"
-    },
-    {
-      "target": "../../agents/skills/persona-creator",
-      "link": ".claude/skills/persona-creator"
-    },
-    {
-      "target": "../../agents/skills/reference-creator",
-      "link": ".claude/skills/reference-creator"
     }
   ],
   "gitignoreAppend": [
     "agents/plans/local/"
   ],
   "skillsToCopy": [
-    "skill-creator",
-    "plan-creator",
-    "persona-creator",
-    "reference-creator"
+    "skill-creator"
   ]
 }

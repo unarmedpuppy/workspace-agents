@@ -14,8 +14,8 @@ npx workspace-agents update     # Same as init (semantic alias)
 
 Workspace Agents sets up a structured documentation framework for AI assistants (Claude, Copilot, Cursor, Gemini) in your project:
 
-- **Fresh project**: Creates complete framework structure with AGENTS.md, vendor breadcrumbs, skills, personas, and plans
-- **Existing framework**: Upgrades to latest version, syncs new skills/templates, fixes broken symlinks
+- **Fresh project**: Creates framework structure with AGENTS.md and vendor breadcrumbs
+- **Existing framework**: Upgrades to latest version, syncs bundled skills, fixes symlinks
 - **Preview before apply**: Shows all changes and asks for confirmation
 - **Never overwrites**: Existing files are preserved (use `--force` to override)
 
@@ -39,55 +39,56 @@ your-project/
 ├── .claude/skills/              # Symlinks to skills (Claude Code)
 └── agents/
     ├── README.md                # Directory index
-    ├── reference/               # Deep documentation
-    │   ├── plan-act.md          # Plan → Act → Test workflow
-    │   ├── documentation-style.md
-    │   └── ...
+    ├── reference/               # Project-specific documentation
     ├── plans/                   # Implementation plans
-    │   ├── tasks.md             # Work tracking
-    │   ├── getting-started.md   # Customization guide
     │   └── local/               # Gitignored scratch (local only)
     ├── personas/                # Agent personalities
-    │   ├── workspace-builder.md # Run first! Customizes everything
-    │   ├── documentation-agent.md
-    │   └── framework-agent.md
-    ├── skills/                  # Executable skills
-    │   ├── skill-creator/       # Create new skills
-    │   ├── plan-creator/        # Create implementation plans
-    │   └── persona-creator/     # Create new personas
-    └── legacy/                  # Migrated files
+    └── skills/                  # Executable skills
+        └── skill-creator/       # Create new skills
 ```
+
+## Philosophy
+
+This framework is **lean by design**:
+
+- **Structure over content**: Provides directories and templates, you add project-specific content
+- **One bundled skill**: `skill-creator` helps you build Anthropic-compliant skills
+- **No meta-documentation**: No framework docs that don't describe your project
+- **Progressive disclosure**: AGENTS.md → agents/README.md → subdirectories
 
 ## Next Steps After Setup
 
-### 1. Customize Your Workspace
+### 1. Customize AGENTS.md
 
-Start a new AI session and ask:
+Edit `AGENTS.md` with your project's:
+- Tech stack and architecture
+- Code style and patterns
+- Key directories and files
+- Workflow boundaries
 
-```
-@workspace-builder enhance my workspace
-```
+### 2. Add Project Documentation
 
-This analyzes your codebase and customizes:
-- AGENTS.md with real project info
-- Creates relevant reference documents
-- Builds a development-agent.md persona
-- Populates tasks.md with recommendations
-
-### 2. Use Skills
-
-After initialization, use Claude Code's `/skill` command:
+Create content as needed:
 
 ```
-/skill skill-creator     # Create a new skill
-/skill plan-creator      # Create an implementation plan
-/skill persona-creator   # Create a new persona
+agents/reference/api-patterns.md    # Your API conventions
+agents/reference/testing.md         # Your testing approach
+agents/personas/reviewer.md         # Code review specialist
+agents/plans/feature-x.md           # Multi-session work tracking
 ```
 
-### 3. Periodic Updates
+### 3. Create Skills
+
+Use Claude Code's `/skill` command:
+
+```
+/skill skill-creator     # Create a new Anthropic-compliant skill
+```
+
+### 4. Periodic Updates
 
 Run `npx workspace-agents` periodically to:
-- Sync new skills from the framework
+- Update bundled skills to latest version
 - Fix broken symlinks
 - Add new template files
 
@@ -95,11 +96,6 @@ Run `npx workspace-agents` periodically to:
 
 ```
 $ npx workspace-agents init
-
-  ██╗    ██╗ ██████╗ ██████╗ ██╗  ██╗███████╗██████╗  █████╗  ██████╗███████╗
-  ...
-                     █████╗  ██████╗ ███████╗███╗   ██╗████████╗███████╗
-  ...
 
 ┌───────────────────────────────────────────────────────┐
 │ You are in: /Users/you/repos/my-project               │
@@ -117,52 +113,35 @@ CREATE DIR  agents/skills/
 
 CREATE      AGENTS.md
 CREATE      CLAUDE.md
-CREATE      agents/personas/workspace-builder.md
 ...
+
+COPY SKILL  agents/skills/skill-creator
 
 SYMLINK     .claude/skills/skill-creator → ../../agents/skills/skill-creator
 
-Summary: 10 directories, 20 files, 5 symlinks
+Summary: 8 directories, 12 files, 1 skill, 1 symlink
 
 Apply these changes? (y/N) y
 
 ✓ Workspace Agents scaffolded successfully!
-
-Next steps:
-1. Customize your workspace - Start a new AI session and ask:
-   @workspace-builder enhance my workspace
-   This will analyze your codebase and customize all documentation.
-
-2. Create skills - Use /skill skill-creator
-3. Create plans - Use /skill plan-creator
-
-Optional: Periodically run npx workspace-agents to update skill
-          symlinks, refine directory structure, and sync with latest features.
 ```
 
 ## Upgrading Existing Projects
 
-If you have an existing framework, running `init` or `update` will:
+Running `init` or `update` on existing frameworks will:
 
-1. Detect missing skills and template files
-2. Move directories with git history preservation
-3. Update terminology in documentation files
-4. Create missing files (new personas, plans, etc.)
-5. Fix broken or missing symlinks
+1. Update bundled skills to latest version
+2. Fix broken or missing symlinks
+3. Add new template files
 
 ```
 $ npx workspace-agents update
 
 Upgrading Workspace Agents...
 
-COPY SKILL  agents/skills/persona-creator
+UPDATE SKILL  agents/skills/skill-creator
 
-CREATE      agents/plans/getting-started.md
-CREATE      agents/personas/workspace-builder.md
-
-SYMLINK     .claude/skills/persona-creator → ../../agents/skills/persona-creator
-
-Summary: 1 skill, 2 new files, 1 symlink
+Summary: 1 skill updated
 
 Apply these changes? (y/N) y
 
@@ -174,17 +153,6 @@ Apply these changes? (y/N) y
 | Skill | Purpose |
 |-------|---------|
 | **skill-creator** | Create, validate, and package Anthropic-compliant skills |
-| **plan-creator** | Create consistent implementation plans (feature, bug-fix, refactor) |
-| **persona-creator** | Create domain-specific agent personas |
-| **reference-creator** | Create focused reference documentation |
-
-## Bundled Personas
-
-| Persona | Purpose |
-|---------|---------|
-| **workspace-builder** | Run first! Comprehensive onboarding that customizes the framework |
-| **documentation-agent** | Maintains documentation quality and standards |
-| **framework-agent** | Workspace Agents framework specialist |
 
 ## Requirements
 
