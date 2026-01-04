@@ -1,6 +1,6 @@
 {
   "name": "workspace-agents",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "Initialize AI agent workflow framework in any project",
   "main": "src/cli.js",
   "bin": {

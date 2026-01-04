@@ -27,19 +27,15 @@ async function init(options = {}) {
     return;
   }
 
-  console.log(chalk.gray(`Action: ${action} (${reason})`));
+  console.log(chalk.gray(`Action: ${action} (${reason})\n`));
 
   // Compute changes (doesn't apply them yet)
   let changes;
   try {
     if (action === 'upgrade') {
-      if (process.env.DEBUG) console.log(chalk.gray('DEBUG: Planning upgrade...'));
       changes = await upgrade.plan(projectRoot, options);
-      if (process.env.DEBUG) console.log(chalk.gray('DEBUG: Upgrade plan complete'));
     } else {
-      if (process.env.DEBUG) console.log(chalk.gray('DEBUG: Planning scaffold...'));
       changes = await scaffold.plan(projectRoot, options);
-      if (process.env.DEBUG) console.log(chalk.gray('DEBUG: Scaffold plan complete'));
     }
   } catch (err) {
     console.error(chalk.red(`Error planning changes: ${err.message}`));

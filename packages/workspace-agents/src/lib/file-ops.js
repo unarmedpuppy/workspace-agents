@@ -107,7 +107,7 @@ function appendGitignore(root, lines) {
 
   if (added.length > 0) {
     const toAppend = (existing.endsWith('\n') ? '' : '\n') +
-      '# ContextForge\n' +
+      '# Workspace Agents\n' +
       added.join('\n') + '\n';
     appendFile(gitignorePath, toAppend);
   }

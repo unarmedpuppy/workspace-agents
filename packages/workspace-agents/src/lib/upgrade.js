@@ -120,13 +120,18 @@ async function plan(projectRoot, options = {}) {
   }
 
   // Ensure directories exist for creates
+  // Collect directories to add separately to avoid infinite loop from modifying array during iteration
+  const dirsToCreate = [];
   for (const create of changes.creates) {
     const dir = path.dirname(create.path);
     const dirPath = path.join(projectRoot, dir);
-    if (!fs.existsSync(dirPath)) {
-      // Add to moves as a create (will be handled by ensureDir)
-      changes.creates.unshift({ path: dir + '/', isDir: true });
+    if (dir !== '.' && !fs.existsSync(dirPath) && !dirsToCreate.includes(dir + '/')) {
+      dirsToCreate.push(dir + '/');
     }
+  }
+  // Prepend directory creates
+  for (const dir of dirsToCreate.reverse()) {
+    changes.creates.unshift({ path: dir, isDir: true });
   }
 
   // Plan symlinks and symlink fixes

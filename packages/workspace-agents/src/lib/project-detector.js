@@ -22,7 +22,7 @@ function detectProjectName(root) {
 }
 
 /**
- * Check if project has existing ContextForge framework
+ * Check if project has existing Workspace Agents framework
  * @param {string} root - Project root directory
  * @returns {boolean}
  */
@@ -47,8 +47,8 @@ function getFrameworkVersion(root) {
   if (fs.existsSync(agentsMd)) {
     try {
       const content = fs.readFileSync(agentsMd, 'utf-8');
-      // Look for version comment: <!-- ContextForge v1.0.0 -->
-      const match = content.match(/<!-- ContextForge v([\d.]+) -->/);
+      // Look for version comment: <!-- workspace-agents v1.0.0 -->
+      const match = content.match(/<!-- workspace-agents v([\d.]+) -->/);
       if (match) return match[1];
     } catch (e) {
       // Ignore read errors
